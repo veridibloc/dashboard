@@ -1,0 +1,378 @@
+{
+  "navigation": {
+    "activity": "Activity",
+    "home": "Home",
+    "settings": "Settings",
+    "transfer": "Transfer",
+    "incoming": "Incoming",
+    "outgoing": "Outgoing",
+    "separation": "Separation",
+    "conversion": "Conversion",
+    "signout": "Sign out",
+    "account": "Account"
+  },
+  "materials": {
+    "aluminum": "Aluminum",
+    "paper": "Paper",
+    "plastic": "Plastic",
+    "glass": "Glass",
+    "residue": "Residue",
+    "no_stock": "No Stock",
+    "no_material_found": {
+      "title": "No Material Found",
+      "text": "There's no material available for selection."
+    },
+    "pet": {
+      "label": "PET",
+      "description": "Polyethylene Terephthalate"
+    },
+    "hdpe": {
+      "label": "HDPE",
+      "description": "High-Density Polyethylene"
+    },
+    "hdpec": {
+      "label": "HDPEc",
+      "description": "High-Density Polyethylene - Colored"
+    },
+    "hdpeb": {
+      "label": "HDPEb",
+      "description": "High-Density Polyethylene - Black"
+    },
+    "hdpen": {
+      "label": "HDPEn",
+      "description": "High-Density Polyethylene - Natural/White"
+    },
+    "pvc": {
+      "label": "PVC",
+      "description": "Polyvinyl Chloride"
+    },
+    "ldpe": {
+      "label": "HDPE",
+      "description": "Low-Density Polyethylene"
+    },
+    "pp": {
+      "label": "PP",
+      "description": "Polypropylene"
+    },
+    "ppf": {
+      "label": "PPF",
+      "description": "Polypropylene - Flexible"
+    },
+    "ppr": {
+      "label": "PPr",
+      "description": "Polypropylene - Raffia"
+    },
+    "ppm": {
+      "label": "PPm",
+      "description": "Polypropylene - Mineral"
+    },
+    "ppb": {
+      "label": "PPb",
+      "description": "Polypropylene - Bucket/Bowl"
+    },
+    "ps": {
+      "label": "PS",
+      "description": "Polystyrene"
+    },
+    "rpet": {
+      "label": "rPET",
+      "description": "PCR - Polyethylene Terephthalate"
+    },
+    "rhdpe": {
+      "label": "rHDPE",
+      "description": "PCR - High-Density Polyethylene"
+    },
+    "rpvc": {
+      "label": "rPVC",
+      "description": "PCR - Polyvinyl Chloride"
+    },
+    "rldpe": {
+      "label": "rHDPE",
+      "description": "PCR - Low-Density Polyethylene"
+    },
+    "rpp": {
+      "label": "rPP",
+      "description": "PCR - Polypropylene"
+    },
+    "rps": {
+      "label": "rPS",
+      "description": "PCR - Polystyrene"
+    },
+    "pcr": {
+      "label": "PCR",
+      "description": "Post Consumer Resin"
+    },
+    "sku132": {
+      "label": "s132",
+      "description": "SKU-132"
+    },
+    "sku275": {
+      "label": "s275",
+      "description": "SKU-275"
+    },
+    "other": {
+      "label": "XX",
+      "description": "Other"
+    }
+  },
+  "common": {
+    "aluminum": "Aluminum",
+    "paper": "Paper",
+    "plastic": "Plastic",
+    "sign_out": "Sign out",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "success": "Success",
+    "print": "Print",
+    "invalid_account_format": "Invalid Account Format, must be numeric id or address, i.e. {prefix}-BY64-7FHD-...",
+    "account_found": "Found Account",
+    "account_not_found": "Unknown Account",
+    "invalid_amount": "Invalid Amount",
+    "not_enough_balance": "Not enough balance",
+    "minimum_amount_is": "Minimum Amount is {amount}",
+    "qr-code": {
+      "scanning_error": "Could not scan QR code",
+      "device": "Device",
+      "touch_to_scan": "Touch to scan",
+      "touch_to_not_scan": "Touch to close camera",
+      "change_camera": "Change Camera"
+    },
+    "lot_receipt_info": {
+      "lot": "Lot Id",
+      "weight": "Weight",
+      "initial_weight": "Claimed Weight",
+      "delivery_date": "Delivery Date",
+      "sender": "Sender",
+      "receipt_id": "Receipt Id"
+    }
+  },
+  "dashboard": {
+    "account_qr_hint": "You can use this QR code to be identified and show who you are.",
+    "balance": "Balance",
+    "balance_other": "Balances",
+    "earn_points_card_cta": "Let's help ecology together",
+    "earn_points_card_title": "Earn VERICLEAN points through the disposal of discarded waste.",
+    "hello": "Hello",
+    "material": "Material",
+    "material_other": "Materials",
+    "paper": "Paper",
+    "plastic": "Plastic",
+    "glass": "Glass",
+    "view_account_qr": "Account QR Code",
+    "nothing_registered_yet": "Nothing registered yet. Get in contact with VeridiBloc to register material!",
+    "click_for_details": "Touch material to see details",
+    "click_for_transfer": "Touch token to transfer"
+  },
+  "exceptions": {
+    "work_in_progress": "We're expanding your veridibloc experience",
+    "work_in_progress_second_line": "Stay tuned to ecology updates",
+    "page_not_found": "Oooops, you found a lost place",
+    "page_not_found_second_line": "This place seems not to be claimed by us yet. We apologize for this unpleasant event. We kindly ask you to return to the previous page.\nIf this problem persist, do not hesitate to contact us immediately.",
+    "back_to_home": "Back to Home"
+  },
+  "index": {
+    "welcome_title": "Welcome, set up your account to continue your recycling journey"
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Personalize your user experience",
+    "account_settings_card": {
+      "description": "Manage your account information, privacy, and security settings to enhance your Veridibloc experience.",
+      "label": "Manage your account",
+      "title": "Account & personalization"
+    },
+    "account": {
+      "touch_open_explorer": "Touch to see in Explorer"
+    },
+    "language_card": {
+      "description": "Change to your preferred language",
+      "label": "Change language",
+      "title": "Language"
+    },
+    "device_card": {
+      "description": "Change your default camera",
+      "label": "Change Camera",
+      "title": "Camera",
+      "no_device_found": "No Device found!"
+    }
+  },
+  "pwa": {
+    "add_button_label": "Press the [Add to Home Screen] button",
+    "copy_body": "This website has app functionality. Add it to your home screen to use it in fullscreen and while offline.",
+    "copy_title": "Add to Home Screen",
+    "share_button_label": "Press the [Share] button",
+    "close": "Close"
+  },
+  "activity": {
+    "title": "Activity",
+    "no_activity": {
+      "title": "No activity to show",
+      "description": "You have no activities. Let's help ecology together"
+    },
+    "card": {
+      "receive_title": "Receive Funds",
+      "transfer_title": "Transfer Funds"
+    }
+  },
+  "incoming": {
+    "title": "Incoming Goods",
+    "description": "Scan the QR Code of incoming goods to proceed",
+    "scan": "Scan QR Code",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "enter_weight": "Enter weight in kg",
+    "select_material": "Select Material",
+    "select_target_stock": "Select Target Stock",
+    "confirmation": {
+      "collection": {
+        "title": "Confirm Collection Receipt",
+        "description": "Please, confirm the receipt of the collected material.",
+        "registration_failed": "Snap, registration failed. Try again or contact support. Reason: {reason}"
+      },
+      "lot": {
+        "title": "Confirm Lot Receipt",
+        "description": "Please, confirm the receipt of the goods.",
+        "lot": "Lot",
+        "lot_registered": "Lot Registered",
+        "register_more": "Register More",
+        "announced_weight": "Announced Weight",
+        "enter_actual_weight": "Enter actual weight in kg",
+        "creation_date": "Creation Date",
+        "registration_failed": "Snap, registration failed. Try again or contact support. Reason: {reason}",
+        "registration_success": "Registration successful. It's being processed by the network now.",
+        "lot_registered_already": {
+          "title": "Lot Already Registered",
+          "description": "This lot was already registered and cannot be registered again. If you think this is wrong contact the support."
+        }
+      }
+    }
+  },
+  "outgoing": {
+    "select": {
+      "title": "Create Lot",
+      "description": "Select material to mount a lot"
+    },
+    "scan_multi_lots": {
+      "title": "Create Lot",
+      "description": "Scan codes from material lots to be used for new lot",
+      "create": "Create",
+      "reset": "Reset",
+      "waiting": "Waiting for scanned lot",
+      "selected_lots": "Selected Lots",
+      "lot_count": "Selected Lot Count",
+      "weight": "Total Weight",
+      "invalid_lot_receipt": {
+        "not_exists": "Lot Receipt not found.",
+        "not_in_contract": "Lot not registered for this material."
+      },
+      "inconsistent_lot_receipt": "Lot is of different material.",
+      "already_added_lot_receipt": "Lot already added."
+    },
+    "scan_lot": {
+      "title": "Create Lot",
+      "description": "Scan code from material lot to be used for new lot",
+      "create": "Create",
+      "reset": "Reset",
+      "waiting": "Waiting for scanned lot",
+      "weight": "Weight",
+      "invalid_lot_receipt": {
+        "not_exists": "Lot Receipt not found.",
+        "not_in_contract": "Lot not registered for this material."
+      },
+      "inconsistent_lot_receipt": "Lot is of different material.",
+      "already_added_lot_receipt": "Lot already added."
+    },
+    "confirm": {
+      "title": "Create Lot",
+      "description": "Enter weight of the new lot/bale",
+      "enter_weight": "Enter weight of the lot",
+      "creation_failed": "Creation failed. Try again, or ask for support. Reason: {reason}"
+    },
+    "confirm_multilot": {
+      "title": "Create Lot",
+      "description": "Confirm the composition of your new lot and submit if all is correct.",
+      "creation_failed": "Creation failed. Try again, or ask for support. Reason: {reason}",
+      "creation_success": "Creation of the lot successful."
+    },
+    "confirm_lot_and_weight": {
+      "title": "Create Lot",
+      "description_scan": "Scan the lot you want to convert",
+      "description_confirm": "Enter weight you want to withdraw from Lot",
+      "enter_weight": "Enter weight",
+      "creation_failed": "Creation failed. Try again, or ask for support. Reason: {reason}",
+      "creation_success": "Creation of the lot successful.",
+      "lot_receipt_info": {
+        "lot": "Lot Id",
+        "weight": "Weight",
+        "initial_weight": "Claimed Weight",
+        "delivery_date": "Delivery Date",
+        "sender": "Sender",
+        "receipt_id": "Receipt Id"
+      }
+    },
+    "lot": {
+      "title": "Create Lot",
+      "description": "The lot is being registered on the blockchain now. This is the QR Code which shall be printed and attached to the shipping documents and lot/bale."
+    }
+  },
+  "separation": {
+    "select": {
+      "title": "Separate Material",
+      "description": "Select separated material "
+    },
+    "register": {
+      "title": "Separate Material",
+      "description": "Enter quantity and confirm separation process",
+      "enter_weight": "Enter weight in kg",
+      "register_failed": "Registration failed. Try again, or ask for support"
+    }
+  },
+  "conversion": {
+    "select": {
+      "title": "Convert Material",
+      "description": "Select converted material"
+    },
+    "register": {
+      "title": "Convert Material",
+      "description": "Enter quantity and confirm conversion process"
+    }
+  },
+  "stock": {
+    "title": "Stock Details",
+    "description": "View details of your materials stock",
+    "search_lot": "Lot Id",
+    "show_delivered": "Show Delivered",
+    "enter_lot_id": "Enter Lot Id",
+    "no_lots_found": "No Lots found",
+    "lot": {
+      "title": "Lot Details",
+      "description": "Lot Id: {lotId}",
+      "creation_date": "Creation Date",
+      "delivery_date": "Delivery Date",
+      "not_delivered_yet": "Not Delivered Yet",
+      "weight": "Weight",
+      "confirmed_weight": "Confirmed Weight",
+      "composition": "Lot Composition"
+    }
+  },
+  "transfer": {
+    "title": "Transfer Token",
+    "description": "Fill out form to transfer token to your business partner",
+    "recipient": "Recipient",
+    "submitting_title": "Submitting",
+    "submitting_description": "Submitting the transfer request to the network.",
+    "submitted_title": "Submission Successful",
+    "submitted_description": "The transfer was submitted successfully to the network. It takes a few moments to be settled.",
+    "see_in_explorer": "See in Explorer",
+    "transfer_success": "Successfully submitted transaction",
+    "transfer_failed": "Oh, no. Transfer failed. Try again or contact support."
+  },
+  "transaction": {
+    "pending": {
+      "title": "Pending Transaction",
+      "description": "A transaction is being processed by the network. It should be settled in a few moments.",
+      "see_in_explorer": "Watch Transaction in Explorer",
+      "est_settlement": "Estimated time to settlement"
+    }
+  }
+}

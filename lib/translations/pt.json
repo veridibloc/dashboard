@@ -1,0 +1,348 @@
+{
+  "navigation": {
+    "activity": "Atividade",
+    "home": "Início",
+    "settings": "Configurações",
+    "transfer": "Transferir",
+    "incoming": "Entrada",
+    "outgoing": "Saída",
+    "separation": "Separação",
+    "conversion": "Conversão",
+    "signout": "Sair",
+    "account": "Conta"
+  },
+  "materials": {
+    "aluminum": "Alumínio",
+    "paper": "Papel",
+    "plastic": "Plástico",
+    "glass": "Vidro",
+    "residue": "Resíduo",
+    "no_stock": "Sem estoque",
+    "no_material_found": {
+      "title": "Material Não Encontrado",
+      "text": "Para a seleção atual nenhum material foi encontrado."
+    },
+    "pet": {
+      "label": "PET",
+      "description": "Tereftalato de Polietileno"
+    },
+    "hdpe": {
+      "label": "PEAD",
+      "description": "Polietileno de Alta Densidade"
+    },
+    "hdpec": {
+      "label": "PEADc",
+      "description": "Polietileno de Alta Densidade - Colorido"
+    },
+    "hdpeb": {
+      "label": "PEADp",
+      "description": "Polietileno de Alta Densidade - Preto"
+    },
+    "hdpen": {
+      "label": "PEADn",
+      "description": "Polietileno de Alta Densidade - Natural/Branco"
+    },
+    "pvc": {
+      "label": "PVC",
+      "description": "Policloreto de Vinila"
+    },
+    "ldpe": {
+      "label": "PEBD",
+      "description": "Polietileno de Baixa Densidade"
+    },
+    "pp": {
+      "label": "PP",
+      "description": "Polipropileno"
+    },
+    "ppf": {
+      "label": "PPf",
+      "description": "Polipropileno - Flexível"
+    },
+    "ppr": {
+      "label": "PPr",
+      "description": "Polipropileno - Raffia"
+    },
+    "ppm": {
+      "label": "PPm",
+      "description": "Polipropileno - Mineral"
+    },
+    "ppb": {
+      "label": "PPb",
+      "description": "Polipropileno - Balde/Bacia"
+    },
+    "ps": {
+      "label": "PS",
+      "description": "Poliestireno"
+    },
+    "rpet": {
+      "label": "rPET",
+      "description": "PCR - Tereftalato de Polietileno"
+    },
+    "rhdpe": {
+      "label": "rPEAD",
+      "description": "PCR - Polietileno de Alta Densidade"
+    },
+    "rpvc": {
+      "label": "rPVC",
+      "description": "PCR - Policloreto de Vinila"
+    },
+    "rldpe": {
+      "label": "rPEBD",
+      "description": "PCR - Polietileno de Baixa Densidade"
+    },
+    "rpp": {
+      "label": "rPP",
+      "description": "PCR - Polipropileno"
+    },
+    "rps": {
+      "label": "rPS",
+      "description": "PCR - Poliestireno"
+    },
+    "sku132":{
+      "label": "s132",
+      "description": "SKU-132"
+    },
+    "sku275":{
+      "label": "s275",
+      "description": "SKU-275"
+    },
+    "other": {
+      "label": "OTH",
+      "description": "Outros"
+    }
+  },
+  "common": {
+    "aluminum": "Alumínio",
+    "paper": "Papel",
+    "plastic": "Plástico",
+    "sign_out": "sair",
+    "confirm": "Confirmar",
+    "cancel": "Cancelar",
+    "success": "Sucesso",
+    "print": "Imprimir",
+    "invalid_account_format": "Formato inválido, deve ser o identificador numérico ou endereço tipo {prefix}-BY64-7FHD-...",
+    "account_found": "Conta encontrada",
+    "account_not_found": "Conta não encontrada",
+    "invalid_amount": "Valor inválido",
+    "not_enough_balance": "Saldo insuficiente",
+    "minimum_amount_is": "Valor mínimo permitido é {amount}",
+    "qr-code": {
+      "scanning_error": "Não conseguiu ler o código QR",
+      "device": "Dispositivo",
+      "touch_to_scan": "Toque para escanear",
+      "touch_to_not_scan": "Toque para fechar a câmera",
+      "change_camera": "Alterar Câmera"
+    },
+    "lot_receipt_info": {
+      "lot": "Id Lote",
+      "weight": "Peso",
+      "initial_weight": "Peso Anunciado",
+      "delivery_date": "Data de Entrega",
+      "sender": "Contrato de Envio",
+      "receipt_id": "Id Recibo"
+    }
+  },
+  "dashboard": {
+    "account_qr_hint": "Você pode usar este código QR para se identificar e mostrar quem você é.",
+    "balance": "Crédito",
+    "balance_other": "Créditos",
+    "earn_points_card_cta": "Vamos ajudar a ecologia juntos",
+    "earn_points_card_title": "Ganhe pontos VERICLEAN através do descarte de resíduos descartados.",
+    "hello": "Olá",
+    "material": "Material",
+    "material_other": "Materiais",
+    "view_account_qr": "Código QR da conta",
+    "paper": "Papel",
+    "plastic": "Plástico",
+    "glass": "Vidro",
+    "nothing_registered_yet": "Nada registrado ainda. Entre em contato com a VeridiBloc para registrar material!",
+    "click_for_details": "Toque material para ver detalhes",
+    "click_for_transfer": "Toque item para fazer transferência"
+
+  },
+  "exceptions": {
+    "work_in_progress": "Estamos expandindo sua experiência veridibloc",
+    "work_in_progress_second_line": "Fique atento às atualizações ecológicas",
+    "page_not_found": "Opa, você encontrou um lugar perdido",
+    "page_not_found_second_line": "Este lugar parece não ter sido reivindicado por nós ainda. Pedimos desculpas por este acontecimento desagradável. Pedimos gentilmente que retorne à página anterior.\nSe o problema persistir, não hesite em contactar-nos imediatamente.",
+    "back_to_home": "Voltar para Início"
+  },
+  "index": {
+    "welcome_title": "Bem-vindo, configure sua conta para continuar sua jornada de reciclagem"
+  },
+  "settings": {
+    "account_settings_card": {
+      "description": "Gerencie as informações da sua conta, privacidade e configurações de segurança para aprimorar sua experiência no Veridibloc.",
+      "label": "Gerencie sua conta",
+      "title": "Conta e personalização"
+    },
+    "account": {
+      "touch_open_explorer": "Toque para ver no Explorer"
+    },
+    "language_card": {
+      "description": "Mude para o seu idioma preferido",
+      "label": "Mudar idioma",
+      "title": "Linguagem"
+    },
+    "device_card": {
+      "description": "Altera sua camera perferida",
+      "label": "Alterar Camera",
+      "title": "Camera",
+      "no_device_found": "Nenhum dispositivo encontrado"
+    }
+  },
+  "pwa": {
+    "add_button_label": "Pressione o botão [Adicionar à tela inicial]",
+    "copy_body": "Este site possui funcionalidade de aplicativo. Adicione-o à tela inicial para usá-lo em tela cheia e off-line.",
+    "copy_title": "Adicionar à tela inicial",
+    "share_button_label": "Pressione o botão [Compartilhar]",
+    "close": "Fechar"
+  },
+  "activity": {
+    "card": {
+      "receive_title": "Receber fundos",
+      "transfer_title": "Transferir fundos"
+    },
+    "title": "Atividade",
+    "no_activity": {
+      "description": "Você não tem atividades. Vamos ajudar a ecologia juntos",
+      "title": "Nenhuma atividade para mostrar"
+    }
+  },
+  "incoming" : {
+    "title": "Entrada Mercadoria",
+    "description": "Digitalize o código QR das mercadorias recebidas para prosseguir",
+    "scan": "Escanear Código QR",
+    "enter_weight": "Digite o peso em kg",
+    "select_material": "Seleciona Material",
+    "select_target_stock": "Select Target Stock",
+    "confirmation": {
+      "collection": {
+        "title": "Recebimento da Coleta",
+        "description": "Por favor, confirme o recebimento do material coletado.",
+        "registration_failed": "Droga, o registro falhou. Tente novamente ou entre em contato com o suporte. Motivo: {reason}"
+      },
+      "lot": {
+        "title": "Recebimento de Mercadoria",
+        "description": "Por favor, confirme o recebimento da mercadoria.",
+        "lot": "Lote",
+        "lot_registered": "Lote Registrado",
+        "register_more": "Cadastra Mais",
+        "announced_weight": "Peso Anunciado",
+        "enter_actual_weight": "Digite o peso atual em kg",
+        "creation_date": "Data de Criação",
+        "registration_failed": "Droga, o registro falhou. Tente novamente ou entre em contato com o suporte. Motivo: {reason}",
+        "registration_success": "O registro foi feito com sucesso e está sendo processado pela rede."
+      }
+    }
+  },
+  "outgoing" : {
+    "select": {
+      "title": "Saída de Mercadoria",
+      "description": "Selecionar material usado para criação de lote de mercardoria"
+    },
+    "scan_multi_lots": {
+      "title": "Saída de Mercadoria",
+      "description": "Escanear códigos de lotes de materiais a serem usados para nova lote de mercadoria",
+      "create": "Criar",
+      "reset": "Resetar",
+      "selected_lots": "Lotes selecionados",
+      "waiting": "Aguardando escaneamento de lotes",
+      "invalid_lot_receipt": {
+        "not_exists": "Recibo de Lote não existe!",
+        "not_in_contract": "Lote não registrado para este material!"
+      },
+
+      "inconsistent_lot_receipt": "Lote é de material diferente!",
+      "already_added_lot_receipt": "Lote já adicionado!",
+      "lot_count": "Número de lotes selecionados",
+      "weight": "Peso total"
+    },
+    "confirm": {
+      "title": "Saída de Mercadoria",
+      "description": "Digite o peso do novo lote a ser criado",
+      "enter_weight": "Digite o peso do novo lote",
+      "creation_failed": "Falha na criação do lote. Tente novamente ou solicite suporte. Motivo: {reason}"
+    },
+    "confirm_multilot": {
+      "title": "Saída de Mercadoria",
+      "description_scan": "Escaneie o lote que você deseja converter",
+      "description_confirm": "Informe o peso que você deseja retirar do lote",
+      "creation_failed": "Falha na criação do lote. Tente novamente ou solicite suporte. Motivo: {reason}",
+      "creation_success": "Sucesso na criação do lote",
+      "confirm_lot_and_weight": {
+        "title": "Saída de Mercadoria",
+        "description": "Selecione o lote e digite o peso do do novo lote a ser criado",
+        "enter_weight": "Digite o peso do novo lote",
+        "creation_failed": "Falha na criação do lote. Tente novamente ou solicite suporte. Motivo: {reason}",
+        "creation_success": "Sucesso na criação do lote"
+      }
+    },
+
+    "lot": {
+      "title": "Saída de Mercadoria",
+      "description": "O lote está sendo registrado na sistema agora. Este é o código QR que deve ser impresso e anexado aos documentos de envio e ao lote."
+    }
+  },
+  "separation": {
+    "select": {
+      "title": "Separar Material",
+      "description": "Selecionar material separado"
+    },
+    "register": {
+      "title": "Separar Material",
+      "description": "Inserir quantidade e confirmar processo de separação",
+      "register_failed": "Falha no registro. Tente novamente ou solicite suporte.",
+      "enter_weight": "Digite o peso"
+    }
+  },
+  "conversion": {
+    "select": {
+      "title": "Converter Material",
+      "description": "Selecionar material convertido"
+    },
+    "register": {
+      "title": "Converter Material",
+      "description": "Inserir quantidade e confirmar processo de conversão"
+    }
+  },
+  "stock": {
+    "title": "Estoque",
+    "description": "Vide detalhes desse material em estoque",
+    "search_lot": "Id do Lote",
+    "show_delivered": "Mostrar Lotes enviados",
+    "enter_lot_id": "Digite o número do Lote",
+    "no_lots_found": "Lotes não encontrados",
+    "lot": {
+      "title": "Detalhes do Lote",
+      "description": "Verifique os detalhes do lote {lotId}",
+      "creation_date": "Data de Criação",
+      "delivery_date": "Data de Envio",
+      "not_delivered_yet": "Ainda não enviado",
+      "composition": "Composição Lote",
+      "weight": "Peso",
+      "confirmed_weight": "Peso Confirmado"
+    }
+  },
+  "transfer": {
+    "title": "Transferir Token",
+    "description": "Preencher o formulário e transferir tokens para seu parceiro",
+    "recipient": "Beneficiário",
+    "submitting_title": "Enviando",
+    "submitting_description": "A solicitação de transferência está sendo enviada.",
+    "submitted_title": "Envio sucedido",
+    "submitted_description": "A transferência foi enviada com sucesso para a rede. Demora alguns instantes para ser concluida.",
+    "see_in_explorer": "Ver no explorador",
+    "transfer_success": "Transação submetida com sucesso",
+    "transfer_failed": "Oh, não. A transferência falhou. Tente novamente ou entre em contato com o suporte."
+  },
+  "transaction" : {
+    "pending":{
+      "title": "Transação Pendente",
+      "description": "Uma transação está sendo processada pela rede. Ela deverá ser finalizada em alguns instantes.",
+      "see_in_explorer": "Ver transação no explorador",
+      "est_settlement": "Tempo estimado até finalização"
+    }
+  }
+
+}
