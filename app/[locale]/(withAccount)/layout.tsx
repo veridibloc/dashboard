@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import {
+  FileCog,
   Home,
   LineChart,
   Package,
@@ -25,12 +26,12 @@ import {
   TooltipContent,
   TooltipTrigger
 } from '@/components/ui/tooltip';
-import { Analytics } from '@vercel/analytics/react';
-import { User } from './user';
-import Providers from './providers';
-import { NavItem } from './nav-item';
-import { SearchInput } from './search';
+import { User } from './dashboard/user';
+import Providers from './dashboard/providers';
+import { NavItem } from '@/components/ui/nav-item';
+import { SearchInput } from './dashboard/search';
 import { ChildrenProps } from '@/types/childrenProps';
+import { RoutingIndicator } from '@/components/ui/routingIndicator';
 
 export default function DashboardLayout({
   children
@@ -42,7 +43,7 @@ export default function DashboardLayout({
         <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
           <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
             <MobileNav />
-            <DashboardBreadcrumb />
+            {/*<DashboardBreadcrumb />*/}
             <SearchInput />
             <User />
           </header>
@@ -50,7 +51,7 @@ export default function DashboardLayout({
             {children}
           </main>
         </div>
-        <Analytics />
+        <RoutingIndicator />
       </main>
     </Providers>
   );
@@ -68,16 +69,12 @@ function DesktopNav() {
           <span className="sr-only">Acme Inc</span>
         </Link>
 
-        <NavItem href="#" label="Dashboard">
+        <NavItem href="/dashboard" label="Dashboard">
           <Home className="h-5 w-5" />
         </NavItem>
 
-        <NavItem href="#" label="Orders">
-          <ShoppingCart className="h-5 w-5" />
-        </NavItem>
-
-        <NavItem href="/" label="Products">
-          <Package className="h-5 w-5" />
+        <NavItem href="/contracts" label="Contracts">
+          <FileCog className="h-5 w-5" />
         </NavItem>
 
         <NavItem href="/customers" label="Customers">

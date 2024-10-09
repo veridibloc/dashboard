@@ -8,7 +8,7 @@ import "../globals.css";
 import {ChildrenProps} from "@/types/childrenProps";
 
 export const metadata: Metadata = {
-    title: "VeridiBloc Plant App",
+    title: "VeridiBloc Dashboard",
 };
 
 const inter = Inter({subsets: ["latin"]});

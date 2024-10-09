@@ -2,9 +2,9 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Veridibloc Plant App",
+    name: "Veridibloc Dashboard",
     short_name: "Veridibloc",
-    description: "Next generation of true Recycling and Circular Economy",
+    description: "The mighty Veridibloc Dashboard",
     start_url: "/",
     display: "fullscreen",
     orientation: "portrait",
