@@ -9,7 +9,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import Link from 'next/link';
 import { useClerk } from '@clerk/nextjs';
 
 export function User() {
@@ -38,13 +37,9 @@ export function User() {
         <DropdownMenuItem>Settings</DropdownMenuItem>
         <DropdownMenuItem>Support</DropdownMenuItem>
         <DropdownMenuSeparator />
-        {user ? (
+        {!!user && (
           <DropdownMenuItem>
               <button onClick={() => signOut()} >Sign Out</button>
-          </DropdownMenuItem>
-        ) : (
-          <DropdownMenuItem>
-            <Link href="/login">Sign In</Link>
           </DropdownMenuItem>
         )}
       </DropdownMenuContent>
