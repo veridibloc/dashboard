@@ -11,6 +11,7 @@ import { notFound } from 'next/navigation';
 import { fetchSingleContract } from '../../server';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { contractsProvider } from '@/common/contractsProvider';
+import { Marker } from '@/components/ui/marker';
 
 interface Props extends PageProps<{ contractId: string }> {}
 
@@ -34,7 +35,9 @@ export default async function ContractPage({ params: { contractId } }: Props) {
           <div className="flex items-center">
             <TabsList>
               <TabsTrigger value="details">Details</TabsTrigger>
-              <TabsTrigger value="errors">Errors</TabsTrigger>
+              <Marker variant="error" text={errors.length > 9 ? "9+": errors.length.toString()} visible={!!errors.length}>
+                <TabsTrigger value="errors">Errors</TabsTrigger>
+              </Marker>
             </TabsList>
           </div>
           <TabsContent value="details">
