@@ -1,1 +1,2 @@
-export * from './components/stockContractErrorTable';
+export * from './stockContractErrorTable';
+export * from './stockContractDetails/stockContractDetails';

@@ -6,23 +6,25 @@ import {
   CardTitle
 } from '@/components/ui/card';
 import { PageProps } from '@/types/pageProps';
-import { StockContractErrorTable } from '@/features/contracts/stock/stockContractView';
+import {
+  StockContractDetails,
+  StockContractErrorTable
+} from '@/features/contracts/stock/stockContractView';
 import { notFound } from 'next/navigation';
-import { fetchSingleContract } from '../../server';
+import { fetchSingleContract, fetchStockContractErrors } from '../../server';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { contractsProvider } from '@/common/contractsProvider';
 import { Marker } from '@/components/ui/marker';
 
 interface Props extends PageProps<{ contractId: string }> {}
 
 export default async function ContractPage({ params: { contractId } }: Props) {
-  const contract = await fetchSingleContract(contractId);
+  const [contract, errors] = await Promise.all([
+    fetchSingleContract(contractId),
+    fetchStockContractErrors(contractId)
+  ]);
   if (!contract) {
     notFound();
   }
-
-  const stockContract = contractsProvider.toStockContract(contract);
-  const errors = await stockContract.getErrors();
 
   return (
     <Card>
@@ -35,7 +37,11 @@ export default async function ContractPage({ params: { contractId } }: Props) {
           <div className="flex items-center">
             <TabsList>
               <TabsTrigger value="details">Details</TabsTrigger>
-              <Marker variant="error" text={errors.length > 9 ? "9+": errors.length.toString()} visible={!!errors.length}>
+              <Marker
+                variant="error"
+                text={errors.length > 9 ? '9+' : errors.length.toString()}
+                visible={!!errors.length}
+              >
                 <TabsTrigger value="errors">Errors</TabsTrigger>
               </Marker>
             </TabsList>
@@ -47,9 +53,7 @@ export default async function ContractPage({ params: { contractId } }: Props) {
                 <CardDescription>All created Stock Contracts</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="max-h-[400px] h-[400px] overflow-y-auto">
-                  <h2>TO DO</h2>
-                </div>
+                <StockContractDetails contract={contract} />
               </CardContent>
             </Card>
           </TabsContent>

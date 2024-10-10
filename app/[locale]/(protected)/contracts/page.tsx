@@ -12,18 +12,27 @@ import { fetchAllContracts } from './server';
 import { Button } from '@/components/ui/button';
 import { PlusCircle } from 'lucide-react';
 import { PageProps } from '@/types/pageProps';
+import Link from 'next/link';
 
-interface Props extends PageProps<{}, { t: string }>{}
+interface Props extends PageProps<{}, { t: string }> {}
 
-export default async function ContractsPage({searchParams : {t : type}}: Props) {
+export default async function ContractsPage({
+  searchParams: { t: type = "stock"}
+}: Props) {
   const contractList = await fetchAllContracts();
   return (
-    <Tabs defaultValue="stock" value={type}>
+    <Tabs value={type}>
       <div className="flex items-center">
         <TabsList>
-          <TabsTrigger value="stock">Stock Contracts</TabsTrigger>
-          <TabsTrigger value="cert">Certificates</TabsTrigger>
-          <TabsTrigger value="vericlean">Vericlean</TabsTrigger>
+          <Link href="?t=stock" shallow={true} prefetch={true}>
+            <TabsTrigger value="stock">Stock Contracts</TabsTrigger>
+          </Link>
+          <Link href="?t=cert" shallow={true} prefetch={true}>
+            <TabsTrigger value="cert">Certificates</TabsTrigger>
+          </Link>
+          <Link href="?t=vericlean" shallow={true} prefetch={true}>
+            <TabsTrigger value="vericlean">Vericlean</TabsTrigger>
+          </Link>
         </TabsList>
         <div className="ml-auto flex items-center gap-2">
           <Button size="sm" className="h-8 gap-1">

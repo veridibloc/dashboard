@@ -72,7 +72,7 @@ function DesktopNav() {
           <Home className="h-5 w-5" />
         </NavItem>
 
-        <NavItem href="/contracts" label="Contracts">
+        <NavItem href="/contracts?t=stock" label="Contracts">
           <FileCog className="h-5 w-5" />
         </NavItem>
 
