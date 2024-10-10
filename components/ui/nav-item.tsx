@@ -8,6 +8,7 @@ import {
 import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEnhancedRouter } from '@/components/hooks/useEnhancedRouter';
 
 export function NavItem({
   href,
@@ -19,12 +20,12 @@ export function NavItem({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-
+  const {push} = useEnhancedRouter()
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Link
-          href={href}
+        <div
+          onClick={() => push(href)}
           className={clsx(
             'flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8',
             {
@@ -34,7 +35,7 @@ export function NavItem({
         >
           {children}
           <span className="sr-only">{label}</span>
-        </Link>
+        </div>
       </TooltipTrigger>
       <TooltipContent side="right">{label}</TooltipContent>
     </Tooltip>

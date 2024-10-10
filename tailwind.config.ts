@@ -4,9 +4,9 @@ export default {
   darkMode: ['class'],
   content: [
     './pages/**/*.{ts,tsx}',
+    './features/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}'
+    './app/**/*.{ts,tsx}'
   ],
   prefix: '',
   theme: {
@@ -19,6 +19,7 @@ export default {
     },
     extend: {
       colors: {
+        veridibloc: "#38C400",
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

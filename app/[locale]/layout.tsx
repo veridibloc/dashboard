@@ -34,7 +34,8 @@ export default function RootLayout({
         <WithTranslations locale={locale}>
             <ClerkProvider
                 localization={getClerkLocalization(locale)}
-                afterSignInUrl={`/${locale}/dashboard`}
+                signInUrl={`/${locale}/dashboard`}
+                afterSignOutUrl={`/${locale}/signin`}
             >
                 <body>
                 {children}

@@ -6,25 +6,15 @@ import { Contract } from '@signumjs/contracts';
 import { contractsProvider } from '@/common/contractsProvider';
 import { ExternalLink } from '@/components/ui/externalLink';
 import { shortenString } from '@/common/shortenString';
-import { Amount, ChainValue } from '@signumjs/util';
-import { Suspense } from 'react';
-import { Spinner } from '@/components/ui/spinner';
-import useSWR from 'swr';
+import { Amount } from '@signumjs/util';
 import { useRouter } from 'next/navigation';
+import { TokenQuantityCell } from './tokenQuantityCell';
+import { ErrorCountCell } from './errorCountCell';
 
 export function CertContractRow({ contract }: { contract: Contract }) {
   const certContract = contractsProvider.toCertContract(contract);
   const { tokenId, tokenName } = certContract.getData();
   const { push } = useRouter();
-  const { data } = useSWR(
-    'signum/api/asset',
-    () => {
-      return contractsProvider.ledger.asset.getAsset({
-        assetId: tokenId
-      });
-    },
-    { suspense: true }
-  );
 
   return (
     <TableRow onClick={() => push(`/contracts/cert/${contract.at}`)}>
@@ -50,11 +40,7 @@ export function CertContractRow({ contract }: { contract: Contract }) {
         )}
       </TableCell>
       <TableCell>
-        <Suspense fallback={<Spinner />}>
-          {ChainValue.create(data?.decimals)
-            .setAtomic(data?.quantityCirculatingQNT)
-            .getAtomic()}
-        </Suspense>
+          <TokenQuantityCell tokenId={tokenId} />
       </TableCell>
       <TableCell>
         <Badge variant="outline">
@@ -63,6 +49,9 @@ export function CertContractRow({ contract }: { contract: Contract }) {
       </TableCell>
       <TableCell>{contract.creationBlock}</TableCell>
       <TableCell>{Amount.fromPlanck(contract.balanceNQT).getSigna()}</TableCell>
+      <TableCell>
+        <ErrorCountCell contract={contract}/>
+      </TableCell>
     </TableRow>
   );
 }

@@ -1,12 +1,16 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { File, PlusCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { currentUser } from '@clerk/nextjs/server';
+import { redirect } from 'next/navigation';
 
 export default async function Page({
   searchParams
 }: {
   searchParams: { q: string; offset: string };
 }) {
+  const user = await currentUser();
+  // if (!user) return redirect(`/signin`);
 
   return (
     <Tabs defaultValue="all">

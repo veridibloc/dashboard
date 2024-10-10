@@ -18,17 +18,16 @@ import { shortenString } from '@/common/shortenString';
 import { Address } from '@signumjs/core';
 import { accountPrefix } from '@/common/accountPrefix';
 import { Amount } from '@signumjs/util';
-import { useRouter } from 'next/navigation';
 import useSWR from 'swr';
-import { Suspense } from 'react';
 import { Spinner } from '@/components/ui/spinner';
+import { useEnhancedRouter } from '@/components/hooks/useEnhancedRouter';
 
 export function StockContractRow({ contract }: { contract: Contract }) {
   const stockContract = contractsProvider.toStockContract(contract);
   const { ownerId, isHalted } = stockContract.getData();
-  const {push} = useRouter();
+  const {push} = useEnhancedRouter();
 
-  const {data: errors} = useSWR(`veridibloc/api/stock/${contract.at}/errors`, () => stockContract.getErrors(), {suspense: true})
+  const {data: errors, isLoading} = useSWR(`veridibloc/api/stock/${contract.at}/errors`, () => stockContract.getErrors())
 
   return (
     <TableRow onClick={() => push(`/contracts/stock/${contract.at}`)}>
@@ -71,9 +70,7 @@ export function StockContractRow({ contract }: { contract: Contract }) {
       <TableCell>{contract.creationBlock}</TableCell>
       <TableCell>{Amount.fromPlanck(contract.balanceNQT).getSigna()}</TableCell>
       <TableCell>
-        <Suspense fallback={<Spinner/>}>
-          {errors.length}
-        </Suspense>
+        {isLoading ? <Spinner/> : errors?.length ?? 0}
       </TableCell>
       <TableCell>
         <DropdownMenu>

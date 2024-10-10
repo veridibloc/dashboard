@@ -1,53 +1,44 @@
-"use client";
+'use client';
 
-import {useTranslations} from "next-intl";
-import {useAuth, SignIn as ClerkSignIn} from "@clerk/nextjs";
-import {Spinner} from "@/components/ui/spinner";
-import {useEffect, useRef} from "react";
-import Image from "next/image";
+import { useAuth, SignIn as ClerkSignIn } from '@clerk/nextjs';
+import { Spinner } from '@/components/ui/spinner';
+import { useEffect } from 'react';
 
 function disableSignUp() {
-    if (!document) return;
-
+  if (!document) return;
     const observer = new MutationObserver((mutations) => {
-        for (const mutation of mutations) {
-            if (mutation.type === 'childList') {
-                const footer = document.getElementsByClassName("cl-footer");
-                for (let e of footer) {
-                    e.remove();
-                }
-                observer.disconnect();
-            }
+    for (const mutation of mutations) {
+      if (mutation.type === 'childList') {
+        const footer = document.getElementsByClassName('cl-footer');
+        let disconnect = false;
+        for (let e of footer) {
+          e.remove();
+          disconnect = true;
         }
-    });
+        if (disconnect) {
+          observer.disconnect();
+        }
+      }
+    }
+  });
 
-    observer.observe(document.body, { childList: true, subtree: true });
+  observer.observe(document.body, { childList: true, subtree: true });
 }
 
 export const SignIn = () => {
-    const {isLoaded} = useAuth();
-    const ref = useRef<any>();
-    const t = useTranslations("index");
+  const { isLoaded } = useAuth();
 
-    useEffect(() => {
-        if (ref.current) {
-            disableSignUp();
-        }
-    }, []);
+  useEffect(() => {
+    disableSignUp();
+  }, []);
 
-    return (
-        <section className="flex flex-col items-center justify-center h-[75vh] mt-4 pt-4 overflow-x-hidden">
-            <div className="flex flex-row justify-center items-center w-full mb-4">
-                    <Image src="/assets/veridibloc_logo.svg" alt="Veridibloc logo" width={48} height={48}/>
-                    <div className="relative">
-                        <h1 className="text-center text-4xl font-bold ml-2">VeridiBloc</h1>
-                        <small className="absolute top-10 text-xs text-veridibloc right-0">Recycling 4.0</small>
-                    </div>
-            </div>
-            <p className="text-center text-neutral-500 max-w-xs font-medium mb-4">
-                {t("welcome_title")}
-            </p>
-            {isLoaded ? <div ref={ref}><ClerkSignIn/></div> : <Spinner/>}
-        </section>
-    );
+  return (
+    <section className="flex flex-col items-center justify-center h-screen overflow-x-hidden bg-cover bg-center bg-fixed bg-no-repeat"
+             style={ {backgroundImage: 'url(/assets/login_bg.webp)'}}
+    >
+      <div className="drop-shadow">
+      {isLoaded ? <ClerkSignIn /> : <Spinner />}
+      </div>
+    </section>
+  );
 };

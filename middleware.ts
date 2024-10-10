@@ -1,22 +1,41 @@
-import { authMiddleware } from "@clerk/nextjs";
-import { DefaultLocale, Locales } from "@/lib/translations/locales";
-import createIntlMiddleware from "next-intl/middleware";
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
+import type { NextFetchEvent, NextRequest } from 'next/server';
+import createMiddleware from 'next-intl/middleware';
 
-const intlMiddleware = createIntlMiddleware({
+const Locales = ['en', 'pt']
+
+const intlMiddleware = createMiddleware({
   locales: Locales,
-  defaultLocale: DefaultLocale,
+  defaultLocale: Locales[0],
 });
 
-export default authMiddleware({
-  beforeAuth: (req) => {
-    // Execute next-intl middleware before Clerk's auth middleware
-    return intlMiddleware(req);
-  },
-  publicRoutes: ["/", "/:locale", "/:locale/signin"],
-  ignoredRoutes:["/api/clerk/webhook"],
-});
+const isProtectedRoute = createRouteMatcher([
+  '/:locale(/?)(.*)'
+]);
+
+export default function middleware(
+  request: NextRequest,
+  event: NextFetchEvent,
+) {
+  if (
+    !request.nextUrl.pathname.includes('signin') &&
+    isProtectedRoute(request)
+  ) {
+    return clerkMiddleware((auth, req) => {
+      if (isProtectedRoute(req)) {
+        const locale
+          = req.nextUrl.pathname.match(/(\/.*)\/a/)?.at(1) ?? '';
+        const signInUrl = new URL(`${locale}/signin`, req.url);
+        auth().protect({unauthenticatedUrl: signInUrl.toString()})
+      }
+
+      return intlMiddleware(req);
+    })(request, event);
+  }
+
+  return intlMiddleware(request);
+}
 
 export const config = {
-  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", '/(pt|en)/:path*', "/(api|trpc)(.*)"],
-  // matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/(api|trpc)(.*)"],
+  matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
 };

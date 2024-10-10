@@ -26,6 +26,7 @@ export function CertContractTable({ contracts }: Props) {
           <TableHead>Contract Code</TableHead>
           <TableHead>Creation Block</TableHead>
           <TableHead>Balance</TableHead>
+          <TableHead>Errors</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody >

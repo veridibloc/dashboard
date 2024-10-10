@@ -11,6 +11,8 @@ import { contractsProvider } from '@/common/contractsProvider';
 import { StockContractTable } from 'features/contracts/stock/stockContractTable';
 import { CertContractTable } from '@/features/contracts/cert/certContractTable';
 import { fetchAllContracts } from './server';
+import { Button } from '@/components/ui/button';
+import { File, PlusCircle } from 'lucide-react';
 
 
 export default async function ContractsPage() {
@@ -26,6 +28,14 @@ export default async function ContractsPage() {
           {/*  Archived*/}
           {/*</TabsTrigger>*/}
         </TabsList>
+        <div className="ml-auto flex items-center gap-2">
+          <Button size="sm" className="h-8 gap-1">
+            <PlusCircle className="h-3.5 w-3.5" />
+            <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+              Add Stock Contract
+            </span>
+          </Button>
+        </div>
       </div>
       <TabsContent value="stockContracts">
         <Card>
@@ -33,7 +43,7 @@ export default async function ContractsPage() {
             <CardTitle>Stock Contracts</CardTitle>
             <CardDescription>All created Stock Contracts</CardDescription>
           </CardHeader>
-          <CardContent >
+          <CardContent>
             <div className="max-h-[400px] h-[400px] overflow-y-auto">
               <StockContractTable contracts={contractList.stockContracts} />
             </div>
@@ -46,9 +56,11 @@ export default async function ContractsPage() {
             <CardTitle>Certificate Contracts</CardTitle>
             <CardDescription>All created Certificate Contracts</CardDescription>
           </CardHeader>
-          <CardContent >
+          <CardContent>
             <div className="max-h-[400px] h-[400px] overflow-y-auto">
-              <CertContractTable contracts={contractList.certificateContracts} />
+              <CertContractTable
+                contracts={contractList.certificateContracts}
+              />
             </div>
           </CardContent>
         </Card>
