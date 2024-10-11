@@ -36,6 +36,12 @@ export async function StockContractDetailsTable({contract}: Props) {
           </TableCell>
         </TableRow>
         <TableRow>
+          <TableCell>Name</TableCell>
+          <TableCell>
+            {contract.name}
+          </TableCell>
+        </TableRow>
+        <TableRow>
           <TableCell>Material</TableCell>
           <TableCell>
             {(descriptor.getCustomField('x-mat') as string).toUpperCase()}
