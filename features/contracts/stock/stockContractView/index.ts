@@ -1,2 +1,4 @@
 export * from './stockContractErrorTable';
-export * from './stockContractDetails/stockContractDetails';
+export * from './stockContractDetails';
+export * from './ownerDetails';
+export * from './stockContractStats';

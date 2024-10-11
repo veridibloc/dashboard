@@ -15,12 +15,11 @@ import { Contract } from '@signumjs/contracts';
 import { contractsProvider } from '@/common/contractsProvider';
 import { ExternalLink } from '@/components/ui/externalLink';
 import { shortenString } from '@/common/shortenString';
-import { Address } from '@signumjs/core';
-import { accountPrefix } from '@/common/accountPrefix';
 import { Amount } from '@signumjs/util';
 import useSWR from 'swr';
 import { Spinner } from '@/components/ui/spinner';
 import { useEnhancedRouter } from '@/components/hooks/useEnhancedRouter';
+import { AddressField } from '@/components/ui/addressField';
 
 export function StockContractRow({ contract }: { contract: Contract }) {
   const stockContract = contractsProvider.toStockContract(contract);
@@ -34,7 +33,7 @@ export function StockContractRow({ contract }: { contract: Contract }) {
       <TableCell>
         <div className="flex flex-col justify-start items-center">
           <ExternalLink
-            href={`${process.env.NEXT_PUBLIC_LEDGER_EXPLORER_URL}/at/${contract.at}`}
+            href={`${process.env.NEXT_PUBLIC_LEDGER_EXPLORER_URL}/ats/${contract.at}`}
           >
             {contract.atRS}
           </ExternalLink>
@@ -42,18 +41,7 @@ export function StockContractRow({ contract }: { contract: Contract }) {
       </TableCell>
       <TableCell className="font-medium">{contract.name}</TableCell>
       <TableCell>
-        {ownerId !== '0' ? (
-          <ExternalLink
-            href={`${process.env.NEXT_PUBLIC_LEDGER_EXPLORER_URL}/address/${ownerId}`}
-          >
-            {Address.fromNumericId(
-              ownerId,
-              accountPrefix()
-            ).getReedSolomonAddress()}
-          </ExternalLink>
-        ) : (
-          'No Owner Defined'
-        )}
+        <AddressField accountId={ownerId} fallbackLabel="Now Owner Defined"/>
       </TableCell>
       <TableCell>
         <Badge variant="outline">

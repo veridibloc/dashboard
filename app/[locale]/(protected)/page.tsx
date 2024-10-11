@@ -29,7 +29,7 @@ export default async function Page({
         </div>
       </div>
       <hr className="w-full"/>
-      <div className="flex justify-center gap-4 items-center">
+      <div className="flex justify-center items-stretch gap-4 ">
         <StockContractCard />
         <CertContractCard />
         <VericleanContractCard />
