@@ -1,19 +1,17 @@
 "use server"
 import { Contract } from '@signumjs/contracts';
 import { contractsProvider } from '@/common/contractsProvider';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Table, TableBody, TableCell, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import { stockModeText } from '@/common/stockModeText';
 import { AddressField } from '@/components/ui/addressField';
 import { AmountField } from '@/components/ui/amountField';
-import { cn } from '@/lib/utils';
 import { Amount } from '@signumjs/util';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface Props {
   contract: Contract;
 }
-
 
 export async function StockContractDetailsTable({contract}: Props) {
 
