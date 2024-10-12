@@ -5,12 +5,8 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table';
-import { UserAccount } from '@/types/userAccount';
-import { AddressField } from '@/components/ui/addressField';
-import { Badge } from '@/components/ui/badge';
-import Link from 'next/link';
 import { StockContractAuthorization } from '@/types/stockContractAuthorization';
-import { AuthorizedUserRow } from '@/features/contracts/stock/stockContractView/authorizedUsersTable/authorizedUserRow';
+import { AuthorizedUserRow } from './authorizedUserRow';
 
 interface Props {
   authorizations: StockContractAuthorization[];
@@ -31,6 +27,13 @@ export function AuthorizedUsersTable({ authorizations }: Props) {
         </TableRow>
       </TableHeader>
       <TableBody>
+        {!authorizations.length && <TableRow>
+          <TableCell colSpan={4}>
+            <div className="text-center text-lg text-gray-400" style={{color: "lightgray"}}>
+              No Authorized Users or Partners
+            </div>
+          </TableCell>
+        </TableRow>}
         {authorizations.map(a =>
           <AuthorizedUserRow key={a.accountId} auth={a}/>
         )}
