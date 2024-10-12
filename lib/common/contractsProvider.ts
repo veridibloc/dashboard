@@ -20,6 +20,7 @@ export class ContractsProvider {
     return this._ledger;
   }
 
+
   fetchCertificateTokenContract(contractId: string) {
     return this.getCertificateTokenContractService().with(contractId);
   }

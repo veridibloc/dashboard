@@ -8,6 +8,7 @@ import { AddressField } from '@/components/ui/addressField';
 import { AmountField } from '@/components/ui/amountField';
 import { Amount } from '@signumjs/util';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { getStockContractDescriptor } from '@/common/getStockContractDescriptor';
 
 interface Props {
   contract: Contract;
@@ -17,7 +18,7 @@ export async function StockContractDetailsTable({contract}: Props) {
 
   const stockContract = contractsProvider.toStockContract(contract);
   const data = stockContract.getData();
-  const descriptor = stockContract.getDescriptor();
+  const descriptor = getStockContractDescriptor(contract);
   const isBalanceLow  = Amount.fromPlanck(contract.balanceNQT).lessOrEqual(Amount.fromSigna(1.0))
 
   return (
@@ -42,7 +43,7 @@ export async function StockContractDetailsTable({contract}: Props) {
         <TableRow>
           <TableCell>Material</TableCell>
           <TableCell>
-            {(descriptor.getCustomField('x-mat') as string).toUpperCase()}
+            {descriptor.material}
           </TableCell>
         </TableRow>
         <TableRow>

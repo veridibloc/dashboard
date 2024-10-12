@@ -18,6 +18,8 @@ export function StockContractTable({ contracts }: Props) {
       <TableHeader>
         <TableRow>
           <TableHead>Address</TableHead>
+          <TableHead>Type</TableHead>
+          <TableHead>Material</TableHead>
           <TableHead>Name</TableHead>
           <TableHead>Owner</TableHead>
           <TableHead>Contract Code</TableHead>
@@ -25,9 +27,7 @@ export function StockContractTable({ contracts }: Props) {
           <TableHead>Creation Block</TableHead>
           <TableHead>Balance</TableHead>
           <TableHead>Errors</TableHead>
-          <TableHead>
-            <span className="sr-only">Actions</span>
-          </TableHead>
+          <TableHead>Actions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody >

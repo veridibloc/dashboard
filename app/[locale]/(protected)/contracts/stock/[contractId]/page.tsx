@@ -10,18 +10,25 @@ import {
   StockContractStats,
   OwnerDetails,
   StockContractDetails,
-  StockContractErrorTable
+  AuthorizedUsersTable
 } from '@/features/contracts/stock/stockContractView';
 import { notFound } from 'next/navigation';
-import { fetchSingleContract, fetchStockContractErrors } from '../../server';
+import {
+  fetchSingleContract, fetchStockContractAuthorizedUsers,
+  fetchStockContractErrors,
+  fetchStockContractLotsIds
+} from '../../server';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Marker } from '@/components/ui/marker';
 import { contractsProvider } from '@/common/contractsProvider';
 import { Button } from '@/components/ui/button';
-import { Cpu, LinkIcon, PlusCircle } from 'lucide-react';
+import { Cpu, LinkIcon } from 'lucide-react';
 import { ExternalLink } from '@/components/ui/externalLink';
 import { Badge } from '@/components/ui/badge';
 import { stockModeText } from '@/common/stockModeText';
+import { StockContractErrorTable } from '@/features/contracts/stock/stockContractView/stockContractErrorTable';
+import { getStockContractDescriptor } from '@/common/getStockContractDescriptor';
+import { StockContractLotsTable } from '@/features/contracts/stock/stockContractView/stockContractLotsTable';
 
 interface Props extends PageProps<{ contractId: string }> {}
 
@@ -34,22 +41,27 @@ function getExplorerUrl(contractId: string): string {
 }
 
 export default async function ContractPage({ params: { contractId } }: Props) {
-  const [contract, errors] = await Promise.all([
+  const [contract, errors, lotIds, authorizations] = await Promise.all([
     fetchSingleContract(contractId),
-    fetchStockContractErrors(contractId)
+    fetchStockContractErrors(contractId),
+    fetchStockContractLotsIds(contractId),
+    fetchStockContractAuthorizedUsers(contractId)
   ]);
   if (!contract) {
     notFound();
   }
   const stockContract = contractsProvider.toStockContract(contract);
+  const descriptor = getStockContractDescriptor(contract);
   const data = stockContract.getData();
-  const descriptor  = stockContract.getDescriptor();
   return (
     <Card>
       <CardHeader>
         <CardTitle>Stock Contract - {contract.atRS} </CardTitle>
         <CardDescription>
-          <Badge variant="outline">{stockModeText(data.stockMode).toUpperCase()}</Badge>&nbsp;
+          <Badge variant="outline">
+            {stockModeText(data.stockMode).toUpperCase()}
+          </Badge>
+          &nbsp;
           {descriptor.description}
         </CardDescription>
       </CardHeader>
@@ -57,7 +69,9 @@ export default async function ContractPage({ params: { contractId } }: Props) {
         <Tabs defaultValue="details">
           <div className="flex items-center">
             <TabsList>
-              <TabsTrigger value="details">Details</TabsTrigger>
+              <TabsTrigger value="details">Overview</TabsTrigger>
+              <TabsTrigger value="lots">Lots</TabsTrigger>
+              <TabsTrigger value="auth">Authorizations</TabsTrigger>
               <Marker
                 variant="error"
                 text={errors.length > 9 ? '9+' : errors.length.toString()}
@@ -65,7 +79,6 @@ export default async function ContractPage({ params: { contractId } }: Props) {
               >
                 <TabsTrigger value="errors">Errors</TabsTrigger>
               </Marker>
-              <TabsTrigger value="lots">Lots</TabsTrigger>
             </TabsList>
             <div className="ml-auto flex items-center gap-2">
               <ExternalLink href={getInspectorUrl(contractId)}>
@@ -87,11 +100,16 @@ export default async function ContractPage({ params: { contractId } }: Props) {
             </div>
           </div>
           <TabsContent value="details">
-            <div className="flex items-stretch justify-center gap-x-4 w-full">
-              <StockContractStats contract={contract} />
-              <StockContractDetails contract={contract} />
-              <OwnerDetails ownerId={data.ownerId} />
-            </div>
+            <Card className="bg-gray-50">
+              <CardHeader />
+              <CardContent>
+                <div className="flex items-stretch justify-center gap-x-4 w-full">
+                  <StockContractStats contract={contract} />
+                  <StockContractDetails contract={contract} />
+                  <OwnerDetails ownerId={data.ownerId} />
+                </div>
+              </CardContent>
+            </Card>
           </TabsContent>
           <TabsContent value="errors">
             <Card>
@@ -117,7 +135,20 @@ export default async function ContractPage({ params: { contractId } }: Props) {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                TO DO
+                <StockContractLotsTable lotIds={lotIds} contract={contract} />
+              </CardContent>
+            </Card>
+          </TabsContent>
+          <TabsContent value="auth">
+            <Card>
+              <CardHeader>
+                <CardTitle>Authorized Users</CardTitle>
+                <CardDescription>
+                  Manage Authorized Users and Business Partners
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <AuthorizedUsersTable authorizations={authorizations} />
               </CardContent>
             </Card>
           </TabsContent>

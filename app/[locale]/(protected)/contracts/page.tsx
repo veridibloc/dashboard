@@ -10,14 +10,15 @@ import { StockContractTable } from 'features/contracts/stock/stockContractTable'
 import { CertContractTable } from '@/features/contracts/cert/certContractTable';
 import { fetchAllContracts } from './server';
 import { Button } from '@/components/ui/button';
-import { PlusCircle } from 'lucide-react';
+import { BadgePlus, PackagePlus } from 'lucide-react';
 import { PageProps } from '@/types/pageProps';
 import Link from 'next/link';
+import { ChildrenProps } from '@/types/childrenProps';
 
 interface Props extends PageProps<{}, { t: string }> {}
 
 export default async function ContractsPage({
-  searchParams: { t: type = "stock"}
+  searchParams: { t: type = 'stock' }
 }: Props) {
   const contractList = await fetchAllContracts();
   return (
@@ -36,9 +37,15 @@ export default async function ContractsPage({
         </TabsList>
         <div className="ml-auto flex items-center gap-2">
           <Button size="sm" className="h-8 gap-1">
-            <PlusCircle className="h-3.5 w-3.5" />
+            <PackagePlus className="h-3.5 w-3.5" />
             <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
               Add Stock Contract
+            </span>
+          </Button>
+          <Button size="sm" className="h-8 gap-1">
+            <BadgePlus className="h-3.5 w-3.5" />
+            <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+              Add Cert Contract
             </span>
           </Button>
         </div>
@@ -50,9 +57,9 @@ export default async function ContractsPage({
             <CardDescription>All created Stock Contracts</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="max-h-[400px] h-[400px] overflow-y-auto">
+            <TableContainer>
               <StockContractTable contracts={contractList.stockContracts} />
-            </div>
+            </TableContainer>
           </CardContent>
         </Card>
       </TabsContent>
@@ -63,11 +70,11 @@ export default async function ContractsPage({
             <CardDescription>All created Certificate Contracts</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="max-h-[400px] h-[400px] overflow-y-auto">
+            <TableContainer>
               <CertContractTable
                 contracts={contractList.certificateContracts}
               />
-            </div>
+            </TableContainer>
           </CardContent>
         </Card>
       </TabsContent>
@@ -78,12 +85,16 @@ export default async function ContractsPage({
             <CardDescription>The Collector Reward Contract</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="max-h-[400px] h-[400px] overflow-y-auto">
+            <TableContainer>
               <h2>TO DO</h2>
-            </div>
+            </TableContainer>
           </CardContent>
         </Card>
       </TabsContent>
     </Tabs>
   );
 }
+
+const TableContainer = ({ children }: ChildrenProps) => (
+  <div className="max-h-[600px] overflow-y-auto">{children}</div>
+);

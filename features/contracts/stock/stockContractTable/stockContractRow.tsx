@@ -20,10 +20,13 @@ import useSWR from 'swr';
 import { Spinner } from '@/components/ui/spinner';
 import { useEnhancedRouter } from '@/components/hooks/useEnhancedRouter';
 import { AddressField } from '@/components/ui/addressField';
+import { stockModeText } from '@/common/stockModeText';
+import { getStockContractDescriptor } from '@/common/getStockContractDescriptor';
 
 export function StockContractRow({ contract }: { contract: Contract }) {
   const stockContract = contractsProvider.toStockContract(contract);
-  const { ownerId, isHalted } = stockContract.getData();
+  const descriptor = getStockContractDescriptor(contract);
+  const { ownerId, isHalted, stockMode } = stockContract.getData();
   const {push} = useEnhancedRouter();
 
   const {data: errors, isLoading} = useSWR(`veridibloc/api/stock/${contract.at}/errors`, () => stockContract.getErrors())
@@ -31,14 +34,16 @@ export function StockContractRow({ contract }: { contract: Contract }) {
   return (
     <TableRow onClick={() => push(`/contracts/stock/${contract.at}`)}>
       <TableCell>
-        <div className="flex flex-col justify-start items-center">
           <ExternalLink
             href={`${process.env.NEXT_PUBLIC_LEDGER_EXPLORER_URL}/ats/${contract.at}`}
           >
             {contract.atRS}
           </ExternalLink>
-        </div>
       </TableCell>
+      <TableCell className="font-medium">
+        {stockMode && <Badge variant='secondary'>{stockModeText(stockMode)}</Badge> }
+      </TableCell>
+      <TableCell className="font-medium">{descriptor.material}</TableCell>
       <TableCell className="font-medium">{contract.name}</TableCell>
       <TableCell>
         <AddressField accountId={ownerId} fallbackLabel="Now Owner Defined"/>
@@ -52,7 +57,7 @@ export function StockContractRow({ contract }: { contract: Contract }) {
         {isHalted ? (
           <Badge variant="destructive">Paused</Badge>
         ) : (
-          <Badge variant="accent">Active</Badge>
+          <Badge variant="success">Active</Badge>
         )}
       </TableCell>
       <TableCell>{contract.creationBlock}</TableCell>

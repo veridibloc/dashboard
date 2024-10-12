@@ -1,6 +1,6 @@
 import { ExternalLink } from '@/components/ui/externalLink';
 import { Address } from '@signumjs/core';
-import { accountPrefix } from '@/common/accountPrefix';
+import { addressPrefix } from '@/common/addressPrefix';
 
 interface Props {
   accountId: string
@@ -15,7 +15,7 @@ export function AddressField({ accountId, fallbackLabel = 'Emtpy Address' }: Pro
       >
         {Address.fromNumericId(
           accountId,
-          accountPrefix()
+          addressPrefix()
         ).getReedSolomonAddress()}
       </ExternalLink>
     ) : (
