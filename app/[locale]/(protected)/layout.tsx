@@ -3,11 +3,7 @@ import {
   FileCog,
   Home,
   LineChart,
-  Package,
-  Package2,
-  PanelLeft,
   Settings,
-  ShoppingCart,
   Users2
 } from 'lucide-react';
 
@@ -19,19 +15,15 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator
 } from '@/components/ui/breadcrumb';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger
-} from '@/components/ui/tooltip';
 import { User } from './user';
 import Providers from './providers';
 import { NavItem } from '@/components/ui/nav-item';
 import { SearchInput } from './search';
 import { ChildrenProps } from '@/types/childrenProps';
 import { RoutingIndicator } from '@/components/ui/routingIndicator';
+import { Modal } from '@/components/ui/modal';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { UnlockSigningTrigger } from '@/features/signing/unlockSigningTrigger';
 
 export default function RootClientLayout({
   children
@@ -40,10 +32,12 @@ export default function RootClientLayout({
     <Providers>
       <main className="flex min-h-screen w-full flex-col bg-muted/40">
         <RoutingIndicator />
+        <Modal />
         <DesktopNav />
         <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
           <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
             {/*<DashboardBreadcrumb />*/}
+            <UnlockSigningTrigger />
             <SearchInput />
             <User />
           </header>
@@ -88,7 +82,7 @@ function DesktopNav() {
         <Tooltip>
           <TooltipTrigger asChild>
             <Link
-              href="#"
+              href="/settings"
               className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
             >
               <Settings className="h-5 w-5" />

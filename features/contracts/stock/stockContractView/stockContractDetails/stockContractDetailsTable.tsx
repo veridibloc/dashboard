@@ -7,7 +7,7 @@ import { stockModeText } from '@/common/stockModeText';
 import { AddressField } from '@/components/ui/addressField';
 import { AmountField } from '@/components/ui/amountField';
 import { Amount } from '@signumjs/util';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/tooltip';
 import { getStockContractDescriptor } from '@/common/getStockContractDescriptor';
 
 interface Props {
@@ -77,12 +77,12 @@ export async function StockContractDetailsTable({contract}: Props) {
           <TableCell>
             {isBalanceLow
               ?
-              <Tooltip>
-                <TooltipTrigger asChild>
+              <Popover>
+                <PopoverTrigger asChild>
                   <Badge variant="destructive"><AmountField planck={contract.balanceNQT}/></Badge>
-                </TooltipTrigger>
-                <TooltipContent>Balance Low - Recharge Contract</TooltipContent>
-              </Tooltip>
+                </PopoverTrigger>
+                <PopoverContent>Balance Low - Recharge Contract</PopoverContent>
+              </Popover>
               : <AmountField planck={contract.balanceNQT} />
             }
           </TableCell>

@@ -10,6 +10,7 @@ export default async function Page({
   searchParams: { q: string; offset: string };
 }) {
 
+
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center">

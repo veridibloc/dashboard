@@ -16,9 +16,9 @@ import { AmountField } from '@/components/ui/amountField';
 import { cn } from '@/lib/utils';
 import { Amount } from '@signumjs/util';
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger
+  Popover,
+  PopoverContent,
+  PopoverTrigger
 } from '@/components/ui/tooltip';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 

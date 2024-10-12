@@ -10,9 +10,11 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { useClerk } from '@clerk/nextjs';
+import { useEnhancedRouter } from '@/components/hooks/useEnhancedRouter';
 
 export function User() {
   const {signOut, user} = useClerk();
+  const router = useEnhancedRouter()
 
   return (
     <DropdownMenu>
@@ -34,7 +36,7 @@ export function User() {
       <DropdownMenuContent align="end">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Settings</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => router.push("settings")}>Settings</DropdownMenuItem>
         <DropdownMenuItem>Support</DropdownMenuItem>
         <DropdownMenuSeparator />
         {!!user && (

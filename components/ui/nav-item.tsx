@@ -6,7 +6,6 @@ import {
   TooltipTrigger
 } from '@/components/ui/tooltip';
 import clsx from 'clsx';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEnhancedRouter } from '@/components/hooks/useEnhancedRouter';
 

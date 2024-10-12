@@ -12,9 +12,9 @@ import { ChildrenProps } from '@/types/childrenProps';
 import { LoadableComponent } from '@/components/ui/loabableComponent';
 import { Contract } from '@signumjs/contracts';
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger
+  Popover,
+  PopoverContent,
+  PopoverTrigger
 } from '@/components/ui/tooltip';
 import { Address } from '@signumjs/core';
 import Link from 'next/link';
@@ -115,12 +115,12 @@ export function StockContractLotRow({ contract, lotId, sold }: Props) {
         <LoadableComponent isLoading={isLoading}>
           {/*TODO: make lot linkable to lot details page -> allow tracing*/}
           {lot?.lotParts.map(({ tx, quantity }) => (
-            <Tooltip>
-              <TooltipTrigger asChild>
+            <Popover>
+              <PopoverTrigger asChild>
                 <Badge variant="secondary">{quantity} kg</Badge>
-              </TooltipTrigger>
-              <TooltipContent>Id: {tx}</TooltipContent>
-            </Tooltip>
+              </PopoverTrigger>
+              <PopoverContent>Id: {tx}</PopoverContent>
+            </Popover>
           ))}
         </LoadableComponent>
       </TableCell>
