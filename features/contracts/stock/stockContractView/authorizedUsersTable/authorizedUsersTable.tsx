@@ -28,7 +28,7 @@ export function AuthorizedUsersTable({ authorizations }: Props) {
       </TableHeader>
       <TableBody>
         {!authorizations.length && <TableRow>
-          <TableCell colSpan={4}>
+          <TableCell colSpan={6}>
             <div className="text-center text-lg text-gray-400" style={{color: "lightgray"}}>
               No Authorized Users or Partners
             </div>
