@@ -1,25 +1,6 @@
 'use server';
 import { Contract } from '@signumjs/contracts';
 import { contractsProvider } from '@/common/contractsProvider';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow
-} from '@/components/ui/table';
-import { Badge } from '@/components/ui/badge';
-import { stockModeText } from '@/common/stockModeText';
-import { AddressField } from '@/components/ui/addressField';
-import { AmountField } from '@/components/ui/amountField';
-import { cn } from '@/lib/utils';
-import { Amount } from '@signumjs/util';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger
-} from '@/components/ui/tooltip';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 interface Props {

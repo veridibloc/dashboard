@@ -35,7 +35,7 @@ export function StockContractRow({ contract }: { contract: Contract }) {
     <TableRow onClick={() => push(`/contracts/stock/${contract.at}`)}>
       <TableCell>
           <ExternalLink
-            href={`${process.env.NEXT_PUBLIC_LEDGER_EXPLORER_URL}/ats/${contract.at}`}
+            href={`${process.env.NEXT_PUBLIC_LEDGER_EXPLORER_URL}/at/${contract.at}`}
           >
             {contract.atRS}
           </ExternalLink>

@@ -10,11 +10,15 @@ interface Props {
 }
 
 export function TokenQuantityCell({ tokenId }: Props) {
-  const { data, isLoading } = useSWR('signum/api/asset', () => {
+  const { data, isLoading } = useSWR(tokenId && tokenId !== "0" ? `signum/api/asset/${tokenId}` : null, () => {
     return contractsProvider.ledger.asset.getAsset({
       assetId: tokenId
     });
   });
+
+  if(tokenId === "0"){
+    return "Not Available"
+  }
 
   if (isLoading) {
     return <Spinner />;
@@ -22,6 +26,6 @@ export function TokenQuantityCell({ tokenId }: Props) {
   return data
     ? ChainValue.create(data?.decimals)
         .setAtomic(data?.quantityCirculatingQNT)
-        .getAtomic()
+        .getCompound()
     : 'Loading Failure';
 }

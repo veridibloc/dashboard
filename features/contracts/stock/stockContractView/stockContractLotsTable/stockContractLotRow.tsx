@@ -4,23 +4,12 @@ import { Badge } from '@/components/ui/badge';
 import { TableCell, TableRow } from '@/components/ui/table';
 import { contractsProvider } from '@/common/contractsProvider';
 import { ExternalLink } from '@/components/ui/externalLink';
-import { ChainTime } from '@signumjs/util';
 import useSWR from 'swr';
-import { Suspense } from 'react';
-import { Spinner } from '@/components/ui/spinner';
-import { ChildrenProps } from '@/types/childrenProps';
 import { LoadableComponent } from '@/components/ui/loabableComponent';
 import { Contract } from '@signumjs/contracts';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger
-} from '@/components/ui/tooltip';
-import { Address } from '@signumjs/core';
-import Link from 'next/link';
-import { addressPrefix } from '@/common/addressPrefix';
 import { shortenString } from '@/common/shortenString';
 import { AddressField } from '@/components/ui/addressField';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 function getStockContractErrorType(type: string) {
   const ErrorMap = {
@@ -115,12 +104,12 @@ export function StockContractLotRow({ contract, lotId, sold }: Props) {
         <LoadableComponent isLoading={isLoading}>
           {/*TODO: make lot linkable to lot details page -> allow tracing*/}
           {lot?.lotParts.map(({ tx, quantity }) => (
-            <Popover>
-              <PopoverTrigger asChild>
+            <Tooltip>
+              <TooltipTrigger asChild>
                 <Badge variant="secondary">{quantity} kg</Badge>
-              </PopoverTrigger>
-              <PopoverContent>Id: {tx}</PopoverContent>
-            </Popover>
+              </TooltipTrigger>
+              <TooltipContent>Id: {tx}</TooltipContent>
+            </Tooltip>
           ))}
         </LoadableComponent>
       </TableCell>

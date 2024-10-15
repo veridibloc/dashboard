@@ -37,7 +37,7 @@ function getInspectorUrl(contractId: string): string {
 }
 
 function getExplorerUrl(contractId: string): string {
-  return `${process.env.NEXT_PUBLIC_EXPLORER_INSPECTOR_URL}/ats/${contractId}`;
+  return `${process.env.NEXT_PUBLIC_EXPLORER_INSPECTOR_URL}/at/${contractId}`;
 }
 
 export default async function ContractPage({ params: { contractId } }: Props) {
