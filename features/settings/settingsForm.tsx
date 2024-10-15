@@ -62,7 +62,6 @@ export function SettingsForm() {
   const handleRevealMnemonic = async () => {
     if (formData.token.length === TokenLength) {
       const mnemonic = await store.get(mnemonicUnlockAtom(formData.token));
-      console.log('handleRevealMnemonic', mnemonic);
       setFormData({ mnemonic, token: '' });
     }
   };
