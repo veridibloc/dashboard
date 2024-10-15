@@ -1,13 +1,27 @@
-import React, { InputHTMLAttributes, useState } from 'react';
+"use client";
 
-interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"> {
+import React, { InputHTMLAttributes, useLayoutEffect, useState } from 'react';
+
+interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"|"value"> {
   onChange: (value: string) => void;
+  value: string;
   length: number;
 }
 
+function valueToChars(value: string, length:number): string[] {
+  let chars = Array(length).fill('') as string[];
+  for(let i=0; i<Math.min(value.length, length); i++){
+    chars[i] = value[i];
+  }
+  return chars;
+}
 
-export function SingleCharInput({ onChange, length, ...props }: Props) {
+export function SingleCharInput({ onChange, value, length, ...props }: Props) {
   const [values, setValues] = useState<string[]>(Array(length).fill(''));
+
+  useLayoutEffect(() => {
+    setValues(valueToChars(value, length))
+  }, [value,length]);
 
   const handleChange = (index: number, value: string) => {
     if (/^[a-zA-Z0-9]?$/.test(value)) {
