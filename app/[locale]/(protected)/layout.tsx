@@ -1,11 +1,5 @@
 import Link from 'next/link';
-import {
-  FileCog,
-  Home,
-  LineChart,
-  Settings,
-  Users2
-} from 'lucide-react';
+import { FileCog, Home, LineChart, Settings, Users2 } from 'lucide-react';
 
 import {
   Breadcrumb,
@@ -22,12 +16,14 @@ import { SearchInput } from './search';
 import { ChildrenProps } from '@/types/childrenProps';
 import { RoutingIndicator } from '@/components/ui/routingIndicator';
 import { Modal } from '@/components/ui/modal';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger
+} from '@/components/ui/tooltip';
 import { UnlockSigningTrigger } from '@/features/signing/unlockSigningTrigger';
 
-export default function RootClientLayout({
-  children
-}: ChildrenProps) {
+export default function RootClientLayout({ children }: ChildrenProps) {
   return (
     <Providers>
       <main className="flex min-h-screen w-full flex-col bg-muted/40">
@@ -58,7 +54,11 @@ function DesktopNav() {
           href="#"
           className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
         >
-          <img src="/assets/veridibloc_logo.svg" className="h-8 w-8 transition-all group-hover:scale-110" alt="Veridibloc Logo"/>
+          <img
+            src="/assets/veridibloc_logo.svg"
+            className="h-8 w-8 transition-all group-hover:scale-110"
+            alt="Veridibloc Logo"
+          />
           <span className="sr-only">Acme Inc</span>
         </Link>
 
@@ -79,18 +79,9 @@ function DesktopNav() {
         </NavItem>
       </nav>
       <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Link
-              href="/settings"
-              className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-            >
-              <Settings className="h-5 w-5" />
-              <span className="sr-only">Settings</span>
-            </Link>
-          </TooltipTrigger>
-          <TooltipContent side="right">Settings</TooltipContent>
-        </Tooltip>
+        <NavItem href="/settings" label="Settings">
+          <Settings className="h-5 w-5" />
+        </NavItem>
       </nav>
     </aside>
   );
