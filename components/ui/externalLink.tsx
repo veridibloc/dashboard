@@ -1,3 +1,5 @@
+"use client"
+
 import { ChildrenProps } from '@/types/childrenProps';
 
 interface Props extends ChildrenProps{
@@ -12,6 +14,9 @@ export function ExternalLink({href, children, className} : Props) {
       target="_blank"
       rel="noopener noreferrer"
       className={`text-blue-500 underline ${className}`}
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
     >
       {children}
     </a>

@@ -30,9 +30,11 @@ export function StockContractRow({ contract }: { contract: Contract }) {
   const {push} = useEnhancedRouter();
 
   const {data: errors, isLoading} = useSWR(`veridibloc/api/stock/${contract.at}/errors`, () => stockContract.getErrors())
-
+  const errorCount = errors?.length ?? 0;
   return (
     <TableRow onClick={() => push(`/contracts/stock/${contract.at}`)}>
+      <TableCell>{contract.name}</TableCell>
+      <TableCell className="max-w-[200px] overflow-hidden text-ellipsis text-nowrap">{descriptor.description}</TableCell>
       <TableCell>
           <ExternalLink
             href={`${process.env.NEXT_PUBLIC_LEDGER_EXPLORER_URL}/at/${contract.at}`}
@@ -40,11 +42,10 @@ export function StockContractRow({ contract }: { contract: Contract }) {
             {contract.atRS}
           </ExternalLink>
       </TableCell>
-      <TableCell className="font-medium">
+      <TableCell>
         {stockMode && <Badge variant='secondary'>{stockModeText(stockMode)}</Badge> }
       </TableCell>
-      <TableCell className="font-medium">{descriptor.material}</TableCell>
-      <TableCell className="font-medium">{contract.name}</TableCell>
+      <TableCell>{descriptor.material}</TableCell>
       <TableCell>
         <AddressField accountId={ownerId} fallbackLabel="Now Owner Defined"/>
       </TableCell>
@@ -63,7 +64,7 @@ export function StockContractRow({ contract }: { contract: Contract }) {
       <TableCell>{contract.creationBlock}</TableCell>
       <TableCell>{Amount.fromPlanck(contract.balanceNQT).getSigna()}</TableCell>
       <TableCell>
-        {isLoading ? <Spinner/> : errors?.length ?? 0}
+        {isLoading ? <Spinner/> : <Badge variant={errorCount ? 'destructive' : 'outline'}>{errorCount}</Badge> }
       </TableCell>
       <TableCell>
         <DropdownMenu>

@@ -9,11 +9,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { StockContractTable } from 'features/contracts/stock/stockContractTable';
 import { CertContractTable } from '@/features/contracts/cert/certContractTable';
 import { fetchAllContracts } from './server';
-import { Button } from '@/components/ui/button';
-import { BadgePlus, PackagePlus } from 'lucide-react';
+import { BadgePlus, PackagePlus, PlusCircle } from 'lucide-react';
 import { PageProps } from '@/types/pageProps';
 import Link from 'next/link';
 import { ChildrenProps } from '@/types/childrenProps';
+import { NavButton } from '@/components/ui/navButton';
 
 interface Props extends PageProps<{}, { t: string }> {}
 
@@ -36,18 +36,18 @@ export default async function ContractsPage({
           </Link>
         </TabsList>
         <div className="ml-auto flex items-center gap-2">
-          <Button size="sm" className="h-8 gap-1">
-            <PackagePlus className="h-3.5 w-3.5" />
+          <NavButton path={"./contracts/stock/new"}>
+            <PlusCircle className="h-3.5 w-3.5" />
             <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
               Add Stock Contract
             </span>
-          </Button>
-          <Button size="sm" className="h-8 gap-1">
-            <BadgePlus className="h-3.5 w-3.5" />
+          </NavButton>
+          <NavButton path={"./contracts/cert/new"}>
+            <PlusCircle className="h-3.5 w-3.5" />
             <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-              Add Cert Contract
+              Add Certificate Contract
             </span>
-          </Button>
+          </NavButton>
         </div>
       </div>
       <TabsContent value="stock">

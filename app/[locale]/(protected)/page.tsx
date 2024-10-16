@@ -1,8 +1,8 @@
 import { PlusCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { StockContractCard } from '@/features/dashboard/stockContractCard';
 import { CertContractCard } from '@/features/dashboard/certContractCard';
 import { VericleanContractCard } from '@/features/dashboard/vericleanContractCard';
+import { NavButton } from '@/components/ui/navButton';
 
 export default async function Page({
   searchParams
@@ -15,18 +15,18 @@ export default async function Page({
     <div className="flex flex-col gap-4">
       <div className="flex items-center">
         <div className="ml-auto flex items-center gap-2">
-          <Button size="sm" className="h-8 gap-1">
+          <NavButton path={"./contracts/stock/new"}>
             <PlusCircle className="h-3.5 w-3.5" />
             <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
               Add Stock Contract
             </span>
-          </Button>
-          <Button size="sm" className="h-8 gap-1">
+          </NavButton>
+          <NavButton path={"./contracts/cert/new"}>
             <PlusCircle className="h-3.5 w-3.5" />
             <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
               Add Certificate Contract
             </span>
-          </Button>
+          </NavButton>
         </div>
       </div>
       <hr className="w-full"/>

@@ -7,7 +7,7 @@ import { Address } from '@signumjs/core';
 import { addressPrefix } from '@/common/addressPrefix';
 import { SingleCharInput } from '@/components/ui/singleCharInput';
 import { FieldLegend } from '@/components/ui/fieldLegend';
-import { useAtom, useAtomValue, useSetAtom, useStore } from 'jotai';
+import { useAtom, useSetAtom, useStore } from 'jotai';
 import {
   mnemonicAtom,
   mnemonicUnlockAtom,
@@ -15,9 +15,8 @@ import {
 } from '@/components/states/mnemonicAtom';
 import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/ui/spinner';
-import { CircleX, EyeClosed, EyeIcon, KeyRoundIcon, Trash2Icon } from 'lucide-react';
-
-const TokenLength = 6;
+import { CircleX, EyeClosed, EyeIcon, KeyRoundIcon } from 'lucide-react';
+import { SecureTokenLength } from '@/common/constant';
 
 export function SettingsForm() {
   const [hydrated, setHydrated] = useState(false);
@@ -60,7 +59,7 @@ export function SettingsForm() {
   };
 
   const handleRevealMnemonic = async () => {
-    if (formData.token.length === TokenLength) {
+    if (formData.token.length === SecureTokenLength) {
       const mnemonic = await store.get(mnemonicUnlockAtom(formData.token));
       setFormData({ mnemonic, token: '' });
     }
@@ -79,7 +78,7 @@ export function SettingsForm() {
     setFormData({ mnemonic: '', token: '' });
   };
 
-  const buttonDisabled = formData.token.length !== TokenLength;
+  const buttonDisabled = formData.token.length !== SecureTokenLength;
   const isRevealed = formData.mnemonic
 
   return (
@@ -127,7 +126,7 @@ export function SettingsForm() {
           />
           <span className="flex flex-row justify-between items-center gap-x-2 ">
             <SingleCharInput
-              length={TokenLength}
+              length={SecureTokenLength}
               onChange={(token) => setFormData((form) => ({ ...form, token }))}
               value={formData.token}
             />

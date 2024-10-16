@@ -17,10 +17,11 @@ export function StockContractTable({ contracts }: Props) {
     <Table>
       <TableHeader>
         <TableRow>
+          <TableHead>Name</TableHead>
+          <TableHead>Description</TableHead>
           <TableHead>Address</TableHead>
           <TableHead>Type</TableHead>
           <TableHead>Material</TableHead>
-          <TableHead>Name</TableHead>
           <TableHead>Owner</TableHead>
           <TableHead>Contract Code</TableHead>
           <TableHead>Active</TableHead>

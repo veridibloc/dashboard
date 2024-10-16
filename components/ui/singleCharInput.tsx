@@ -1,12 +1,9 @@
 "use client";
 
-import React, { InputHTMLAttributes, useLayoutEffect, useState } from 'react';
+import React, { InputHTMLAttributes, useLayoutEffect, useRef, useState } from 'react';
+import {nanoid} from "nanoid"
 
-interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"|"value"> {
-  onChange: (value: string) => void;
-  value: string;
-  length: number;
-}
+
 
 function valueToChars(value: string, length:number): string[] {
   let chars = Array(length).fill('') as string[];
@@ -16,7 +13,14 @@ function valueToChars(value: string, length:number): string[] {
   return chars;
 }
 
+interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"|"value"> {
+  onChange: (value: string) => void;
+  value: string;
+  length: number;
+}
+
 export function SingleCharInput({ onChange, value, length, ...props }: Props) {
+  const idPrefixRef = useRef<string>(`single-char-${nanoid(6)}`);
   const [values, setValues] = useState<string[]>(Array(length).fill(''));
 
   useLayoutEffect(() => {
@@ -32,12 +36,12 @@ export function SingleCharInput({ onChange, value, length, ...props }: Props) {
       // Auto-focus to the next input
       if (value && index < length - 1) {
         (
-          document.getElementById(`char-${index + 1}`) as HTMLInputElement
+          document.getElementById(`${idPrefixRef.current}-${index + 1}`) as HTMLInputElement
         ).focus();
       }
       if (!value && index > 0) {
         (
-          document.getElementById(`char-${index - 1}`) as HTMLInputElement
+          document.getElementById(`${idPrefixRef.current}-${index - 1}`) as HTMLInputElement
         ).focus();
       }
       onChange(newValues.join(''))
@@ -49,7 +53,7 @@ export function SingleCharInput({ onChange, value, length, ...props }: Props) {
       {values.map((char, index) => (
         <input
           key={index}
-          id={`char-${index}`}
+          id={`${idPrefixRef.current}-${index}`}
           type="text"
           maxLength={1}
           value={char}
