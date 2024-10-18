@@ -23,7 +23,6 @@ export const mnemonicUnlockAtom = (secureToken:string) => atom(
     try {
       return await decrypt(encrypted, secureToken);
     } catch (e) {
-      // console.error('Failed to decrypt');
       return '';
     }
   }

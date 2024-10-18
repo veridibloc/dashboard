@@ -1,11 +1,14 @@
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
-import { ChildrenProps } from '@/types/childrenProps';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import {
+  StockContractCreationFormProcessor,
+  StockContractCreationFormSeparator
+} from '@/features/contracts/stock/stockContractCreation';
 
 /*
  * 1. instantiate contract -> charges with 1 SIGNA also
@@ -18,21 +21,33 @@ import { ChildrenProps } from '@/types/childrenProps';
 
 export default async function NewContractPage() {
   return (
+    <Tabs defaultValue="separator">
       <div className="flex items-center">
-        <Card>
+        <TabsList>
+            <TabsTrigger value="separator">Separator</TabsTrigger>
+            <TabsTrigger value="processor">Processor</TabsTrigger>
+        </TabsList>
+      </div>
+      <TabsContent value="separator">
+        <Card className="bg-card/25">
           <CardHeader>
-            <CardTitle>New Contract</CardTitle>
-            <CardDescription>Create a new contract Table</CardDescription>
+            <CardTitle>New Separator Contract</CardTitle>
           </CardHeader>
           <CardContent>
-            <TableContainer>
-            </TableContainer>
+              <StockContractCreationFormSeparator/>
           </CardContent>
         </Card>
-      </div>
-  );
+      </TabsContent>
+      <TabsContent value="processor">
+        <Card className="bg-card/25">
+          <CardHeader>
+            <CardTitle>New Processor Contract</CardTitle>
+          </CardHeader>
+          <CardContent>
+              <StockContractCreationFormProcessor/>
+          </CardContent>
+        </Card>
+      </TabsContent>
+    </Tabs>  );
 }
 
-const TableContainer = ({ children }: ChildrenProps) => (
-  <div className="max-h-[600px] overflow-y-auto">{children}</div>
-);
