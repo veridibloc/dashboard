@@ -16,6 +16,7 @@ import { ChildrenProps } from '@/types/childrenProps';
 import { RoutingIndicator } from '@/components/ui/routingIndicator';
 import { Modal } from '@/components/ui/modal';
 import { UnlockSigningButton } from '@/features/signing/unlockSigningButton';
+import { ErrorBoundary } from '@/components/ui/error-boundary';
 
 export default function RootClientLayout({ children }: ChildrenProps) {
   return (
@@ -31,7 +32,7 @@ export default function RootClientLayout({ children }: ChildrenProps) {
             <User />
           </header>
           <main className="grid flex-1 items-start gap-2 p-4 sm:px-6 sm:py-0 md:gap-4 bg-muted/40">
-            {children}
+            <ErrorBoundary>{children}</ErrorBoundary>
           </main>
         </div>
       </main>

@@ -1,23 +1,47 @@
-import {useTranslations} from "next-intl";
-import Link from "next/link";
+"use client"
+
+import Link from 'next/link'
+import { Frown, Home, RotateCcw } from 'lucide-react'
+import { useEnhancedRouter } from '@/components/hooks/useEnhancedRouter';
+import { Button } from '@/components/ui/button';
 
 export const NotFound = () => {
-    const t = useTranslations("exceptions");
+
+  const router=useEnhancedRouter()
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-[85vh] pt-6 px-8  w-full">
-            <p className="text-6xl text-center my-4">😭</p>
-
-            <h3 className="text-lg font-bold text-justify my-4">{t("page_not_found")}</h3>
-            <p className="text-justify whitespace-pre-line w-full md:w-1/2">
-                {t("page_not_found_second_line")}
-            </p>
-            <Link className="mt-6" href={"/"}>
-                <button type="button"
-                        className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:bg-blue-100 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:bg-blue-800/30 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                    {t("back_to_home")}
-                </button>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center text-gray-900 p-8 rounded-lg shadow-lg backdrop-blur-sm bg-veridibloc/10">
+          <h1 className="text-6xl font-bold mb-4">404</h1>
+          <Frown className="w-24 h-24 mx-auto mb-4 animate-bounce" />
+          <h2 className="text-3xl font-semibold mb-4">Oops! Page Not Found</h2>
+          <p className="text-xl mb-8">
+            Looks like this page took a vacation without telling us.
+            <br />
+            Maybe it's sipping cocktails on a digital beach somewhere?
+          </p>
+          <div className="flex justify-center space-x-4">
+            <Link
+              href="/"
+              className="flex items-center justify-center space-x-2 bg-white text-gray-600 px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition duration-300"
+              shallow={true}
+              onClick={()=>router.replace("/")}
+            >
+              <Home className="w-5 h-5" />
+              <span>Go Home</span>
             </Link>
+            <Button
+              onClick={() => router.back()}
+              className="flex items-center justify-center space-x-2 bg-white text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition duration-300"
+            >
+              <RotateCcw className="w-5 h-5" />
+              <span>Go Back</span>
+            </Button>
+          </div>
+          <p className="mt-8 text-sm opacity-75">
+            If you think this is a mistake, just pretend you meant to come here. We won't tell anyone.
+          </p>
         </div>
-    );
+      </div>
+    )
 };

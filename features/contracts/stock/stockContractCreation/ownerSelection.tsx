@@ -3,6 +3,7 @@
 import { UserAccount } from '@/types/userAccount';
 import { ScrollableTableContainer } from '@/components/ui/scrollableTableContainer';
 import { UserAccountTable } from '@/components/ui/userAccountTable';
+import { useEnhancedRouter } from '@/components/hooks/useEnhancedRouter';
 
 interface Props {
   userAccounts: UserAccount[]
@@ -10,8 +11,12 @@ interface Props {
 
 export function OwnerSelection({userAccounts}: Props) {
 
+  const {push} = useEnhancedRouter()
+
   const handleRowClick = (userAccount: UserAccount) => {
-    console.log(userAccount);
+    if(userAccount.role && userAccount.accountId){
+      push(`/separator?id=${userAccount.accountId}`)
+    }
   }
 
   return <ScrollableTableContainer>

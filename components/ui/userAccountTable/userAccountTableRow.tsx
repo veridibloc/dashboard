@@ -59,15 +59,15 @@ export function UserAccountTableRow({ userAccount, onClick }: Props) {
           ))}
         </div>
       </TableCell>
-      {/*<TableCell>*/}
-      {/*  <div className="flex flex-row gap-x-1 w-[200px] flex-wrap">*/}
-      {/*    {userAccount.stockContracts?.map(({ id, label }, index) => (*/}
-      {/*      <Link key={`contract-${id}-${index}`} href={`/contracts/stock/${id}`}>*/}
-      {/*        <Badge variant="outline">{label}</Badge>*/}
-      {/*      </Link>*/}
-      {/*    ))}*/}
-      {/*  </div>*/}
-      {/*</TableCell>*/}
+      <TableCell>
+        <div className="flex flex-row gap-x-1 w-[200px] flex-wrap">
+          {userAccount.stockContracts?.map(({ id, label }, index) => (
+            <Link key={`contract-${id}-${index}`} href={`/contracts/stock/${id}`}>
+              <Badge variant="outline">{label}</Badge>
+            </Link>
+          ))}
+        </div>
+      </TableCell>
       <TableCell>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

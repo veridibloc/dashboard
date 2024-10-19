@@ -26,7 +26,7 @@ export function UserAccountTable({ userAccounts, onRowClick }: Props) {
           <TableHead>Address</TableHead>
           <TableHead>Active</TableHead>
           <TableHead>Collectibles</TableHead>
-          {/*<TableHead>StockContracts</TableHead>*/}
+          <TableHead>StockContracts</TableHead>
           <TableHead>Actions</TableHead>
         </TableRow>
       </TableHeader>
