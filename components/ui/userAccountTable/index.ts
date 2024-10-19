@@ -1,0 +1,1 @@
+export {UserAccountTable} from "./userAccountTable"

@@ -1,15 +1,8 @@
 'use server';
-import { fetchUserAccountByAccountId } from '@/server/fetchUserAccountByAccountId';
-import { UserAccount } from '@/types/userAccount';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle
-} from '@/components/ui/card';
-import { OwnerDetailsTable } from '@/features/contracts/stock/stockContractView/ownerDetails/ownerDetailsTable';
+import { fetchUserAccountByAccountId } from '@/server/fetchUserAccounts';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { OwnerDetailsTable } from './ownerDetailsTable';
 
 function NoOwnerDefined() {
   return (
@@ -18,8 +11,6 @@ function NoOwnerDefined() {
     </div>
   );
 }
-
-
 
 interface Props {
   ownerId: string;
@@ -31,8 +22,13 @@ export async function OwnerDetails({ ownerId }: Props) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="flex flex-row items-center gap-x-2">Owner
-          {owner ? <Badge variant="outline">{owner.role.toUpperCase()}</Badge> : ''}
+        <CardTitle className="flex flex-row items-center gap-x-2">
+          Owner
+          {owner ? (
+            <Badge variant="outline">{owner.role?.toUpperCase()}</Badge>
+          ) : (
+            ''
+          )}
         </CardTitle>
       </CardHeader>
       <CardContent>

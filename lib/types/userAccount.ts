@@ -6,10 +6,10 @@ interface LabeledId {
     label: string;
 }
 export interface MetaInfo {
-    role: "separator" | "recycler" | "converter",
-    isIntermediate: boolean,
-    collectible: LabeledId[],
-    stockContracts: LabeledId[]
+    role?: "separator" | "recycler" | "converter",
+    isIntermediate?: boolean,
+    collectible?: LabeledId[],
+    stockContracts?: LabeledId[]
 }
 export interface UserAccount extends MetaInfo {
     publicKey: string;
@@ -17,5 +17,7 @@ export interface UserAccount extends MetaInfo {
     email: string;
     logoUrl: string;
     firstName: string;
+    lastName: string;
+    created: number;
     isActive: boolean;
 }

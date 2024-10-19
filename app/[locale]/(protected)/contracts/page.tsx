@@ -9,11 +9,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { StockContractTable } from 'features/contracts/stock/stockContractTable';
 import { CertContractTable } from '@/features/contracts/cert/certContractTable';
 import { fetchAllContracts } from './server';
-import { BadgePlus, PackagePlus, PlusCircle } from 'lucide-react';
+import { PlusCircle } from 'lucide-react';
 import { PageProps } from '@/types/pageProps';
 import Link from 'next/link';
-import { ChildrenProps } from '@/types/childrenProps';
 import { NavButton } from '@/components/ui/navButton';
+import { ScrollableTableContainer } from '@/components/ui/scrollableTableContainer';
 
 interface Props extends PageProps<{}, { t: string }> {}
 
@@ -36,13 +36,13 @@ export default async function ContractsPage({
           </Link>
         </TabsList>
         <div className="ml-auto flex items-center gap-2">
-          <NavButton path={"./contracts/stock/new"}>
+          <NavButton path={'./contracts/stock/new'}>
             <PlusCircle className="h-3.5 w-3.5" />
             <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
               Add Stock Contract
             </span>
           </NavButton>
-          <NavButton path={"./contracts/cert/new"}>
+          <NavButton path={'./contracts/cert/new'}>
             <PlusCircle className="h-3.5 w-3.5" />
             <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
               Add Certificate Contract
@@ -57,9 +57,9 @@ export default async function ContractsPage({
             <CardDescription>All created Stock Contracts</CardDescription>
           </CardHeader>
           <CardContent>
-            <TableContainer>
+            <ScrollableTableContainer>
               <StockContractTable contracts={contractList.stockContracts} />
-            </TableContainer>
+            </ScrollableTableContainer>
           </CardContent>
         </Card>
       </TabsContent>
@@ -70,11 +70,11 @@ export default async function ContractsPage({
             <CardDescription>All created Certificate Contracts</CardDescription>
           </CardHeader>
           <CardContent>
-            <TableContainer>
+            <ScrollableTableContainer>
               <CertContractTable
                 contracts={contractList.certificateContracts}
               />
-            </TableContainer>
+            </ScrollableTableContainer>
           </CardContent>
         </Card>
       </TabsContent>
@@ -85,16 +85,12 @@ export default async function ContractsPage({
             <CardDescription>The Collector Reward Contract</CardDescription>
           </CardHeader>
           <CardContent>
-            <TableContainer>
+            <ScrollableTableContainer>
               <h2>TO DO</h2>
-            </TableContainer>
+            </ScrollableTableContainer>
           </CardContent>
         </Card>
       </TabsContent>
     </Tabs>
   );
 }
-
-const TableContainer = ({ children }: ChildrenProps) => (
-  <div className="max-h-[600px] overflow-y-auto">{children}</div>
-);
