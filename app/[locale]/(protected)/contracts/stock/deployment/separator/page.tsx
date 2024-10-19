@@ -19,10 +19,10 @@ import { AddressField } from '@/components/ui/addressField';
  * 5. [optional] authorize additional user
  */
 
-interface Props extends PageProps<{}, { r: string, id: string }>{}
+interface Props extends PageProps<{}, { ownerId: string }>{}
 
-export default async function NewContractPage({searchParams: {r, id}}: Props) {
-  const owner = await fetchUserAccountByAccountId(id);
+export default async function NewContractPage({searchParams: {ownerId}}: Props) {
+  const owner = await fetchUserAccountByAccountId(ownerId);
 
   if(!owner){
     return notFound()
@@ -34,7 +34,7 @@ export default async function NewContractPage({searchParams: {r, id}}: Props) {
         <div className="flex flex-row justify-between items-start w-full">
           <div>
             <CardTitle>New Separator Contract</CardTitle>
-            <CardDescription>Owner: {owner?.email} - Address: <AddressField accountId={id}/> </CardDescription>
+            <CardDescription>Owner: {owner?.email} - Address: <AddressField accountId={ownerId}/> </CardDescription>
           </div>
         </div>
       </CardHeader>

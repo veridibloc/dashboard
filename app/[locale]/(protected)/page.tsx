@@ -15,13 +15,13 @@ export default async function Page({
     <div className="flex flex-col gap-4">
       <div className="flex items-center">
         <div className="ml-auto flex items-center gap-2">
-          <NavButton path={"./contracts/stock/new"}>
+          <NavButton path={"./contracts/stock/deployment"}>
             <PlusCircle className="h-3.5 w-3.5" />
             <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
               Add Stock Contract
             </span>
           </NavButton>
-          <NavButton path={"./contracts/cert/new"}>
+          <NavButton path={"./contracts/cert/deployment"}>
             <PlusCircle className="h-3.5 w-3.5" />
             <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
               Add Certificate Contract

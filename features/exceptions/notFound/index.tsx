@@ -1,6 +1,4 @@
 "use client"
-
-import Link from 'next/link'
 import { Frown, Home, RotateCcw } from 'lucide-react'
 import { useEnhancedRouter } from '@/components/hooks/useEnhancedRouter';
 import { Button } from '@/components/ui/button';
@@ -21,17 +19,17 @@ export const NotFound = () => {
             Maybe it's sipping cocktails on a digital beach somewhere?
           </p>
           <div className="flex justify-center space-x-4">
-            <Link
-              href="/"
-              className="flex items-center justify-center space-x-2 bg-white text-gray-600 px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition duration-300"
-              shallow={true}
-              onClick={()=>router.replace("/")}
+            <Button
+              onClick={() => router.replace("/")}
+              variant="secondary"
+              className="flex items-center justify-center space-x-2 bg-white text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition duration-300"
             >
               <Home className="w-5 h-5" />
               <span>Go Home</span>
-            </Link>
+            </Button>
             <Button
               onClick={() => router.back()}
+              variant="secondary"
               className="flex items-center justify-center space-x-2 bg-white text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition duration-300"
             >
               <RotateCcw className="w-5 h-5" />

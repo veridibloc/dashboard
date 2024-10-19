@@ -1,21 +1,26 @@
 'use client';
 
-import { useTransition } from 'react';
-import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
-import { Spinner } from '@/components/icons';
-import { Search } from 'lucide-react';
+import { DeleteIcon, Search } from 'lucide-react';
+import { useSearchParams } from 'next/navigation';
+import { useLayoutEffect, useState } from 'react';
 
 export function SearchInput() {
-  const router = useRouter();
-  const [isPending, startTransition] = useTransition();
+  const searchParams = useSearchParams();
+  const [value, setValue] = useState("");
+
+  useLayoutEffect(() => {
+    setValue(searchParams.get('q') ?? "")
+  }, [searchParams])
 
   function searchAction(formData: FormData) {
     let value = formData.get('q') as string;
     let params = new URLSearchParams({ q: value });
-    startTransition(() => {
-      router.replace(`/?${params.toString()}`);
-    });
+    window.history.pushState(null, '', `?${params}`)
+  }
+
+  const handleDelete = () => {
+    window.history.pushState(null, '', '?')
   }
 
   return (
@@ -26,8 +31,10 @@ export function SearchInput() {
         type="search"
         placeholder="Search..."
         className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]"
+        onChange={e => setValue(e.target.value)}
+        value={value}
       />
-      {isPending && <Spinner />}
+      <DeleteIcon onClick={handleDelete} className="absolute right-2 top-[.75rem] h-4 w-4 text-muted-foreground" />
     </form>
   );
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import { AlertTriangle, RefreshCcw, StepBackIcon } from 'lucide-react';
+import { AlertTriangle, HomeIcon, RefreshCcw, StepBackIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import React from 'react';
 import { useRouter } from 'next/navigation';
@@ -14,10 +14,10 @@ interface ErrorScreenProps {
 
 export function ErrorScreen({ error, onReset }: ErrorScreenProps) {
 
-  const {back} = useEnhancedRouter()
+  const router = useEnhancedRouter()
 
-  const handleGoBack = () => {
-    back()
+  const handleGoHome = () => {
+    router.push("/contracts")
     onReset();
   }
 
@@ -44,9 +44,9 @@ export function ErrorScreen({ error, onReset }: ErrorScreenProps) {
             <RefreshCcw className="mr-2 h-4 w-4" />
             Try Again
           </Button>
-          <Button onClick={back} className="flex items-center">
-            <StepBackIcon className="mr-2 h-4 w-4" />
-            Back
+          <Button onClick={handleGoHome} className="flex items-center">
+            <HomeIcon className="mr-2 h-4 w-4" />
+            Home
           </Button>
         </div>
       </div>

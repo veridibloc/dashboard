@@ -22,6 +22,9 @@ export class ErrorBoundary extends Component<
   }
 
   static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+    if(error.message === "NEXT_NOT_FOUND") {
+      return { hasError: false, error: null };
+    }
     return { hasError: true, error };
   }
 
