@@ -46,7 +46,7 @@ export function OwnerDetailsTable({ owner }: Props) {
           <TableCell>Stock Contracts</TableCell>
           <TableCell>
             <div className="flex flex-row gap-2">
-              {owner.stockContracts.map(({ id, label }) => {
+              {owner.stockContracts?.map(({ id, label }) => {
                 return (
                   <Link key={id} href={`/contracts/stock/${id}`}>
                     <Badge variant="outline">{label.toUpperCase()}</Badge>
@@ -60,7 +60,7 @@ export function OwnerDetailsTable({ owner }: Props) {
           <TableCell>Collectibles</TableCell>
           <TableCell>
             <div className="flex flex-row gap-2">
-              {!owner.collectible.length ? '-' : owner.collectible.map(({ id, label }) => <Badge variant="outline">{label.toUpperCase()}</Badge> )}
+              {!owner.collectible?.length ? '-' : owner.collectible.map(({ id, label }) => <Badge variant="outline">{label.toUpperCase()}</Badge> )}
             </div>
           </TableCell>
         </TableRow>
