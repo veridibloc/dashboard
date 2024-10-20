@@ -11,7 +11,6 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { MoreHorizontal } from 'lucide-react';
 import { TableCell, TableRow } from '@/components/ui/table';
-import { ExternalLink } from '@/components/ui/externalLink';
 import { AddressField } from '@/components/ui/addressField';
 import { UserAccount } from '@/types/userAccount';
 import Link from 'next/link';

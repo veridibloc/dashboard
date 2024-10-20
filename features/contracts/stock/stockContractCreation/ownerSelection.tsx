@@ -31,7 +31,7 @@ export function OwnerSelection({ userAccounts }: Props) {
 
   const handleRowClick = (userAccount: UserAccount) => {
     if (userAccount.role && userAccount.accountId) {
-      push(`/separator?id=${userAccount.accountId}`);
+      push(`./deployment/separator?ownerId=${userAccount.accountId}`);
     }
   };
 

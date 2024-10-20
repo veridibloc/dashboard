@@ -7,6 +7,7 @@ import { Inter } from 'next/font/google';
 import '../globals.css';
 import { ChildrenProps } from '@/types/childrenProps';
 import { Provider as JotaiProvider } from 'jotai';
+import { MaterialProvider } from '@/components/contexts/materialProvider';
 
 export const metadata: Metadata = {
   title: 'VeridiBloc Dashboard'
@@ -37,17 +38,17 @@ export default function RootLayout({
   return (
     <html lang={locale} className={inter.className}>
       <WithTranslations locale={locale}>
-        <ClerkProvider
-          localization={getClerkLocalization(locale)}
-          signInUrl={`/${locale}/dashboard`}
-          afterSignOutUrl={`/${locale}/signin`}
-        >
-          <JotaiProvider>
-          <body>
-            {children}
-          </body>
-          </JotaiProvider>
-        </ClerkProvider>
+        <MaterialProvider locale={locale}>
+          <ClerkProvider
+            localization={getClerkLocalization(locale)}
+            signInUrl={`/${locale}/dashboard`}
+            afterSignOutUrl={`/${locale}/signin`}
+          >
+            <JotaiProvider>
+              <body>{children}</body>
+            </JotaiProvider>
+          </ClerkProvider>
+        </MaterialProvider>
       </WithTranslations>
     </html>
   );

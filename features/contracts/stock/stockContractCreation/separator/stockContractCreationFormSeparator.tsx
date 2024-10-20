@@ -2,13 +2,7 @@
 import { Wizard, WizardStepProps } from '@/components/ui/wizard';
 import { StepDescription, StepMaterial, StepCollectible } from './steps';
 import { CreationData } from './creationData';
-
-const initialData: CreationData = {
-  ownerId: '',
-  certificateContractId: '',
-  collectorTokenId: '',
-  description: ''
-};
+import { UserAccount } from '@/types/userAccount';
 
 const steps = [
   { title: 'Description', description: 'What describes the Separator best?' },
@@ -29,13 +23,22 @@ const WizardStepRenderer = (props: WizardStepProps<CreationData, string>) => {
   return StepComponent ? <StepComponent {...props} /> : null;
 };
 
-export function StockContractCreationFormSeparator() {
+interface Props {
+  owner: UserAccount
+}
+
+export function StockContractCreationFormSeparator({owner}: Props) {
   const handleOnFinish = (data: CreationData) => {
     console.log('onFinish', data);
   };
 
   return (
-    <Wizard steps={steps} initialState={initialData} onFinish={handleOnFinish}>
+    <Wizard steps={steps} initialState={{
+      owner,
+      certificateContractId: '',
+      materialId: '',
+      description: ''
+    }} onFinish={handleOnFinish}>
       {(props) => (
         <div className="min-h-[200px] w-full py-2">
           <WizardStepRenderer {...props} />

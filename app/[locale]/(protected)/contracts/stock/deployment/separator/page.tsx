@@ -22,6 +22,11 @@ import { AddressField } from '@/components/ui/addressField';
 interface Props extends PageProps<{}, { ownerId: string }>{}
 
 export default async function NewContractPage({searchParams: {ownerId}}: Props) {
+
+  if(!ownerId){
+    throw new Error("ownerId must be provided");
+  }
+
   const owner = await fetchUserAccountByAccountId(ownerId);
 
   if(!owner){
@@ -34,12 +39,12 @@ export default async function NewContractPage({searchParams: {ownerId}}: Props) 
         <div className="flex flex-row justify-between items-start w-full">
           <div>
             <CardTitle>New Separator Contract</CardTitle>
-            <CardDescription>Owner: {owner?.email} - Address: <AddressField accountId={ownerId}/> </CardDescription>
+            <CardDescription>Owner: {owner.email} - Address: <AddressField accountId={ownerId}/> </CardDescription>
           </div>
         </div>
       </CardHeader>
       <CardContent>
-        <StockContractCreationFormSeparator/>
+        <StockContractCreationFormSeparator owner={owner}/>
       </CardContent>
     </Card>
   );

@@ -1,6 +1,8 @@
+import { UserAccount } from '@/types/userAccount';
+
 export type CreationData = {
-  ownerId: string
+  owner: Readonly<UserAccount>
   certificateContractId: string
-  collectorTokenId: string
+  materialId: string
   description: string
 }
